@@ -1,0 +1,1498 @@
+% Template for PLoS
+% Version 3.7 Aug 2025
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{soulutf8}
+\sethlcolor{yellow}
+
+\soulregister\cite7
+\soulregister\ref7
+\soulregister\pageref7
+\soulregister\eqref7
+\soulregister\url7
+\soulregister\nameref7
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage[nopatch=eqnum]{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+    \cline{#1}%
+      \noalign{\vskip\arrayrulewidth}%
+        \noalign{\global\arrayrulewidth\savedwidth}%
+        }
+
+        % \thickhline command for thick horizontal lines that span the table
+        \newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+        \hline
+        \noalign{\global\arrayrulewidth\savedwidth}}
+
+
+        % Remove comment for double spacing
+        %\usepackage{setspace} 
+        %\doublespacing
+
+        % Text layout
+        %\raggedright 
+        \setlength{\parindent}{0.5cm}
+        \textwidth 5.25in
+        \textheight 8.75in
+
+        % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+        % Captions will be left justified
+        \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+        \renewcommand{\figurename}{Fig}
+
+        % Please use the included `plos2025.bst` as your BibTeX style
+        \bibliographystyle{plos2025}
+
+        % Remove brackets from numbering in List of References
+        \makeatletter
+        \renewcommand{\@biblabel}[1]{\quad#1.}
+        \makeatother
+
+
+
+        % Header and Footer with logo
+        \usepackage{lastpage,fancyhdr,graphicx}
+        \usepackage{epstopdf}
+        \usepackage{adjustbox}
+        \usepackage{float}
+        \usepackage[most]{tcolorbox}
+
+        
+        %\pagestyle{myheadings}
+        \pagestyle{fancy}
+        \fancyhf{}
+        %\setlength{\headheight}{27.023pt}
+        %\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+        \rfoot{\thepage/\pageref{LastPage}}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+        \fancyheadoffset[L]{2.25in}
+        \fancyfootoffset[L]{2.25in}
+        \lfoot{\today}
+
+        %% Include all user-defined macros below
+
+        \newcommand{\lorem}{\textbf{LOREM}}
+        \newcommand{\ipsum}{\textbf{IPSUM}}
+
+        %% END MACROS SECTION
+
+
+        \begin{document}
+        \vspace*{0.2in}
+
+        % Title must be 250 characters or less.
+        \begin{flushleft}
+        {\Large
+        \textbf{A twin-aware multimodal deep learning framework with optimized late fusion for early prediction of adolescent anxiety disorder}
+        }
+        \newline
+
+        Md. Taosif\textsuperscript{1*},
+        Ummay Maimona Chaman\textsuperscript{1},
+        Nazifa Anjum Prova\textsuperscript{1},
+        Sidrat Moon Taher\textsuperscript{1},
+        Md Golam Rabiul Alam\textsuperscript{1*},
+        Rafeed Rahman\textsuperscript{1}
+        \\
+        \bigskip
+
+        \textbf{1} Department of Computer Science and Engineering, BRAC University, Dhaka, Bangladesh
+        \\
+        \bigskip
+
+        * Corresponding authors: rabiul.alam@bracu.ac.bd, md.taosif@g.bracu.ac.bd
+
+        \end{flushleft}
+        % Please keep the abstract below 300 words
+
+        % For PLOS Medicine research article authors, please structure your abstract
+        % with "Background", "Method and Findings" and "Conclusion" sections per
+        % journal requirements.
+
+        % For PLOS Neglected Tropical Diseases research article authors, please
+        % structure your abstract with "Background", "Methodology", "Findings", and
+        % "Conclusion" sections per journal requirements.
+        %
+        \section*{Abstract}
+
+Mental health problems in adolescents are frequently under-identified because current evaluation methods fail to integrate biological, behavioral, and demographic information simultaneously. To address this, we propose a twin-aware multimodal deep learning framework applied to the Queensland Twin Adolescent Brain (QTAB) dataset for early prediction of incident adolescent anxiety disorder. We employ a 3D convolutional neural network for neuroimaging data and prototype-based learning modules with residual encoders for behavioral questionnaire and phenotypic data. Each modality-specific encoder learns compact representations optimized for class-imbalanced prediction through multi-loss objective functions. Calibrated probability outputs from the three modules are combined via optimized weighted late fusion. The framework achieves an AUC of 0.8935 (95\% CI: 0.792--0.969), \hl{representing an absolute gain of 11.7 percentage points over the best unimodal baseline (questionnaire: AUC = 0.7766)}, with a sensitivity of 85.7\% and a specificity of 87.3\%. Pairwise statistical testing indicated that the classification patterns of the fusion model differ from the questionnaire-only baseline (McNemar $p = 0.0008$); however, \hl{pairwise AUC comparisons did not reach statistical significance (DeLong $p > 0.05$) due to the limited statistical power of the small held-out test set ($n = 62$, 7 positive cases). All results should therefore be interpreted as preliminary and exploratory.} The optimized fusion weights of \hl{23\% MRI, 63\% questionnaire, and 14\% phenotypic data highlight the dominant predictive role of behavioral information.} \hl{These findings demonstrate that calibrated late fusion of multimodal predictions can serve as a proof-of-concept framework for early adolescent anxiety screening in twin cohorts, pending validation on larger independent samples.}
+
+
+        % Please keep the Author Summary between 150 and 200 words. Use first person.
+        % PLOS ONE, PLOS Biology, PLOS Global Public Health, PLOS Mental Health, and PLOS Water authors please skip this step. Author Summary is not valid for submissions to these journals.
+
+        % For PLOS Medicine authors, please structure your author summary with answers to the following questions:
+        % Why was this study done?
+        % What did the researchers do and find?
+        % What do these findings mean?
+        %
+
+        \linenumbers
+
+        % Use "Eq" instead of "Equation" for equation citations.
+        \section*{Introduction}
+        Mental health disorders in adolescents, particularly anxiety disorders, represent a significant global public health concern due to their early onset and long-term impact on cognitive development, academic performance, social functioning, and overall quality of life \cite{ref36,ref37}. Epidemiological evidence suggests that many psychiatric disorders begin during childhood or adolescence and may persist into adulthood if not detected and treated early \cite{ref36,ref38}. Anxiety disorders during adolescence are associated with impaired emotional regulation, increased risk of comorbid mental illnesses such as depression, and long-term psychosocial difficulties \cite{ref17}. It is estimated that approximately one in five adolescents experiences a psychiatric disorder, highlighting the urgent need for reliable and scalable methods for early detection and intervention \cite{ref37}. Early identification of at-risk individuals enables timely preventive strategies that can significantly improve long-term mental health outcomes and reduce the burden on healthcare systems \cite{ref38}.
+
+        Traditional screening and diagnostic methods rely primarily on self-report questionnaires and clinical interviews. Although these tools are widely used, they are inherently subjective and may fail to capture the complex interactions among biological, behavioral, and environmental risk factors that contribute to anxiety disorders \cite{ref11,ref13}. These approaches are often cross-sectional and do not provide sufficient insight into early risk prediction before the full clinical manifestation of symptoms. Furthermore, conventional single-modality approaches that rely exclusively on behavioral, neuroimaging, or phenotypic data are limited in their ability to fully represent the multifactorial nature of mental health disorders, resulting in reduced predictive accuracy and clinical applicability \cite{ref40}.
+
+        Recent advances in machine learning and deep learning have demonstrated the potential of multimodal approaches to improve predictive performance by integrating complementary information from multiple sources, including neuroimaging, behavioral assessments, and demographic or phenotypic data \cite{ref1,ref25}. Multimodal deep learning models have shown superior performance compared to unimodal models in various psychiatric prediction tasks, as they can capture complex nonlinear relationships across different modalities. For example, multimodal neural networks combining structural MRI, functional MRI, and genetic data have achieved high classification accuracy in psychiatric disorder prediction tasks \cite{ref25,ref39}. These findings highlight the potential of multimodal learning to improve early detection of mental health risks.
+
+        Despite these advances, several challenges remain. Many existing studies focus primarily on adult populations, limiting their generalizability to adolescent mental health prediction. Additionally, most studies use cross-sectional datasets and fail to account for familial or genetic relationships among participants, particularly in twin-based datasets. Ignoring twin relationships may lead to information leakage between training and testing samples, resulting in overly optimistic performance estimates and reduced real-world reliability \cite{ref32,ref33,ref34}. Deep learning models also often suffer from limited interpretability, which reduces their clinical usability and acceptance in healthcare settings \cite{ref15,ref16}. Moreover, small sample sizes and heterogeneous multimodal data increase the risk of overfitting and limit the robustness of predictive models.
+
+        Twin-based longitudinal datasets, such as the Queensland Twin Adolescent Brain (QTAB) cohort, provide a unique opportunity to address these limitations by enabling the study of genetic and environmental influences on adolescent mental health \cite{ref32}. Twin studies allow partial disentanglement of genetic and environmental risk factors, making them particularly valuable for understanding early predictors of psychiatric disorders \cite{ref33,ref34}. The Spence Children Anxiety Scale (SCAS), a validated behavioral assessment tool, provides clinically relevant anxiety measures that can be combined with neuroimaging and phenotypic data to improve predictive modeling \cite{ref35}. Integrating structural MRI, behavioral questionnaires, and phenotypic information within a multimodal deep learning framework offers the potential to identify adolescents at risk before the onset of clinically significant anxiety symptoms.
+
+        \hl{To address these challenges, this study proposes a twin-aware multimodal deep learning framework for early prediction of adolescent anxiety disorder. The present study makes three primary contributions that distinguish it from existing multimodal psychiatric prediction work. First, we implement a twin-aware, family-level data splitting protocol that explicitly prevents co-twin genetic leakage --- a methodological gap that is routinely overlooked in twin-based cohort studies. Second, we frame the prediction task as longitudinal incident-anxiety detection (subclinical-to-clinical transition at follow-up), rather than the more common cross-sectional anxiety classification, which more closely approximates the clinical goal of early screening. Third, we employ prototype-based encoders with multi-head similarity for behavioral and phenotypic modules, a design choice motivated by the need for interpretable, class-imbalance-robust representations in small clinical cohorts. Together, these contributions position the framework as a proof-of-concept for methodologically rigorous multimodal anxiety prediction, rather than a clinically deployable tool, and we caution that results remain exploratory given the limited sample size of the QTAB cohort.}
+
+        \subsection*{Research Contributions}
+
+        \hl{The primary objective of this study is to develop a twin-aware
+        multimodal deep learning framework capable of predicting early
+        adolescent anxiety risk. The proposed system integrates
+        neuroimaging, behavioral questionnaires, and phenotypic
+        information to improve predictive accuracy, interpretability,
+        and clinical relevance. The main contributions of this research
+        are summarized as follows:}
+
+        \begin{itemize}
+        
+        \item \hl{We introduce a twin-aware multimodal prediction framework for adolescent anxiety risk that prevents co-twin information leakage through family-level data splitting.} The proposed framework integrates structural MRI, behavioral questionnaire responses, and phenotypic traits within a unified bio--psycho--social modeling approach. Crucially, the framework employs family-level train/validation/test splitting to prevent genetic information leakage from co-twins, addressing a critical methodological gap in twin-based neuropsychiatric prediction studies that often overlook within-family dependencies.
+        
+        \item \hl{We formulate a neuroimaging-based prediction module using pretrained 3D convolutional neural networks. This module learns compact neuroanatomical representations from T1-weighted MRI scans to capture structural brain patterns associated with increased anxiety risk.}
+        
+        \item \hl{We apply a phenotypic representation module that incorporates demographic and genetic information. This component models individual-level characteristics, including age, sex, and twin zygosity, allowing the system to account for genetic similarity and environmental influences.}
+        
+        \item \hl{We develop a behavioral questionnaire module to capture psychological risk indicators.}
+        Self-reported anxiety questionnaire responses are transformed into structured feature representations that provide strong predictive signals related to emotional and behavioral vulnerability.
+        
+        \item \hl{We design a multimodal fusion strategy for integrating predictions across modalities.}
+        Decision-level late fusion is used to combine modality-specific predictions, enabling stable integration of heterogeneous data sources while maintaining model interpretability.
+        
+        \end{itemize}
+
+        \subsection*{Scope and challenges}
+        The adolescents in this study are part of the Queensland Twin Adolescent Brain group and range in age from 12 to 18 years. It use a longitudinal twin sample to differentiate the impacts of genetic and environmental factors on mental health. The multimodal approach integrates organized MRI data, standardized anxiety questionnaires, and demographic and genetic characteristics in order to clarify the etiology of adolescent anxiety. Prototype-based networks not only make accurate predictions, but they also offer hidden signals of weakness that can be comprehended. Twin-aware evaluation ensures that performance numbers are correct and stops co-twin data from leaking. The study concentrates on early risk identification rather than diagnosing or forecasting symptoms based on their anticipated appearance.
+
+        The research also examines the scientific and practical challenges encountered when attempting to forecast mental health based on several aspects of a twin. The small size of the QTAB group raises the risk of overfitting and lowers the statistical power. Different kinds of data make it harder to train and combine models. For clinical use, it is essential to achieve a good balance between how sophisticated a model is and how easy it is to understand. It is crucial to carefully look at twins to lower genetic prejudice. In clinical settings, it is crucial to achieve an optimal balance between sensitivity and specificity to identify at-risk adolescents and initiate preventive measures promptly.
+
+        \subsection*{Related work}
+
+        Recent research have increasingly employed deep learning as well as machine learning methodologies to facilitate the early detection of mental health issues in adolescents. These procedures are more thorough than traditional clinical evaluations because they employ data in order to look at psychological, behavioral, and neurobiological aspects. Recent advances in multimodal computing and learning representations have made it easier for us to spot patterns of danger. This has made it possible to do early screenings and make individualized treatment plans.
+
+        \subsubsection*{Adolescent mental health disorders and early prediction}
+        Adolescents are generally the first to get sick with worry and the diseases that come with it. This can cause problems with education, relationships, and mental health for a long period ~\cite{ref36,ref37}. The brain, behavior, and environment all affect each other in a way which makes growth extremely vulnerable during early adolescence. This means that finding dangers early is more crucial than ever. Standard screening approaches depend on people telling them about symptoms after the fact and are not particularly good at guessing what will happen in the early stages.
+
+        Recent ongoing studies indicate that ML-based models incorporating both behavioral and psychological measures can partially forecast future changes in mental health, with AUC values between 0.80 and 0.87~\cite{ref18,ref19}. These results are good, but these kinds of models generally have difficulties since they rely on self-reported data, are subject to group bias, and are hard to explain. Additionally, the majority of research attempting to identify anxiety in adolescents employ one-dimensional designs and infrequently utilize objective biological markers such as neuroimaging. This complicates the studies' ability to comprehend the numerous elements influencing the likelihood of anxiety. People also rarely consider genetic confounding, especially when looking at family or twin groups. This can make performance results overly high~\cite{ref32,ref33}. These issues demonstrate the necessity for forecasting models that are multimodal, genetically informed, and grounded in biological principles.
+
+        \subsubsection*{Machine learning and deep learning in mental health prediction}
+
+        Machine Learning and Deep Learning have been applied with a lot of different kinds of data to make predictions about mental health. Using TF-IDF, Word2Vec, and classic classifiers like SVM along with Random Forest on datasets like Reddit and CLPsych, text-based models have attained an AUC value of 0.84 to 0.89~\cite{ref11,ref13}. Researchers found that transformer-based language models could reach AUC values of up to 0.92, which made contextual knowledge even better~\cite{ref17}. Speech-based approaches that use audio and paralinguistic features have shown AUCs of 0.81 to 0.90 on datasets like DAIC-WOZ~\cite{ref14}. Passive sensing using data from cellphones and wearables has demonstrated potential, achieving AUC values of 0.89 for long-term mental health monitoring~\cite{ref9,ref12}.
+
+        Most ML and DL models are still one-dimensional and cross-sectional, even though they operate effectively. Classical machine learning techniques are constrained by features that must be meticulously selected manually, while deep models frequently struggle with generalization and interpretation, particularly within small adolescent cohorts ~\cite{ref15,ref16}. We need to progress toward multimodal and physiologically based modes of learning because of these challenges.
+
+        \begin{table*}[!t]
+        \begin{adjustwidth}{-2.25in}{0in}
+        \centering
+        \caption{\textbf{Comparative Overview of Multimodal Mental Health Prediction Studies}}
+        \label{tab:multimodal_comparison}
+        \footnotesize
+        \renewcommand{\arraystretch}{1.15}
+
+        \begin{tabular}{|p{2.0cm}|p{3.5cm}|p{3.8cm}|p{4.8cm}|p{1.8cm}|}
+        \hline
+        \textbf{Ref} & \textbf{Dataset Used} & \textbf{Model / Algorithm} & \textbf{Key Results} & \textbf{Modality} \\
+        \hline
+
+        \cite{ref1},\cite{ref4}
+        & Multimodal behavioral, facial expression and speech datasets
+        & Multimodal deep neural networks, attention-based fusion, transformer models
+        & Multimodal fusion of facial, behavioral, and speech signals improves accuracy and robustness in detecting mental disorders such as depression
+        & Multimodal \\
+        \hline
+
+        \cite{ref5}--\cite{ref8}
+        & Multimodal clinical and behavioral datasets
+        & Hybrid machine learning frameworks, BiLSTM, CNN--LSTM architectures
+        & Hybrid deep learning models integrating CNN and LSTM enhance early detection performance for depression and anxiety
+        & Multimodal \\
+        \hline
+
+        \cite{ref9}, \cite{ref12}, \cite{ref26}
+        & Behavioral sensing datasets including smartphone and wearable data
+        & Random Forest, Gradient Boosting, deep neural network ensembles
+        & Passive sensing data provides continuous behavioral monitoring and enables early mental health prediction
+        & Multimodal \\
+        \hline
+
+        \cite{ref10}, \cite{ref14}, \cite{ref20}, \cite{ref27}
+        & Speech and behavioral datasets
+        & CNN--LSTM, SVM, Random Forest, large language model based multitask frameworks
+        & Fusion of speech timing, acoustic features, and behavioral indicators improves reliability of depression detection
+        & Multimodal \\
+        \hline
+
+        \cite{ref11}, \cite{ref13}, \cite{ref17}
+        & Social media text datasets (Reddit, Twitter, online forums)
+        & TF-IDF, Word2Vec with SVM and Random Forest; encoder-only transformer models
+        & Linguistic features from online text enable early screening of depression through contextual representation learning
+        & Unimodal \\
+        \hline
+
+        \cite{ref23}, \cite{ref25}, \cite{ref46}
+        & Neuroimaging datasets including MRI and fMRI data
+        & Elastic Net regression, deep neural networks with attention mechanisms
+        & Integration of neuroimaging and biological features enables prediction of psychiatric risk in adolescents
+        & Multimodal \\
+        \hline
+
+        \cite{ref33}, \cite{ref34}
+        & Longitudinal twin cohort datasets (Swedish Twin Register, Beijing Twin Study)
+        & Gradient boosting, logistic regression, statistical genetic modeling
+        & Twin cohort studies enable early prediction of mental health disorders and separation of genetic and environmental risk factors
+        & Multimodal \\
+        \hline
+
+        Proposed Fusion Model
+        & Queensland Twin Adolescent Brain (QTAB) Dataset~\cite{ref31,ref32}
+        & Twin-aware multimodal (MRI + Questionnaire + Phenotypic) fusion framework
+        & Longitudinal twin modeling facilitates early prediction of adolescent anxiety risk and enables separation of hereditary and environmental influences
+        & Multimodal \\
+        \hline
+
+        \end{tabular}
+
+        \begin{flushleft}
+        Table notes: Summary of multimodal mental health prediction studies, highlighting datasets, models, and key results. The proposed twin-aware fusion model leverages longitudinal QTAB data to improve early prediction of adolescent mental health outcomes.
+        \end{flushleft}
+
+        \end{adjustwidth}
+        \end{table*}
+
+        \subsubsection*{Neuroimaging-based deep learning for mental disorder prediction}
+
+        Neuroimaging captures alterations in the brain's structure and function, serving as definitive biomarkers for assessing psychiatric tendency. CNN-based models utilizing sMRI, fMRI, and DTI data have demonstrated the capability to predict depression and schizophrenia in adolescents, achieving AUROC values between 0.62 and 0.72 in the ABCD cohort~\cite{ref23}, and reaching an accuracy of up to 88\% with the incorporation of genetic data~\cite{ref25}. Nonetheless, neuroimaging-only models frequently exhibit low sensitivity due to limited sample sizes, location heterogeneity, and insufficient behavioral understanding of the context. This highlights how crucial it is to use more than one way to do anything.
+
+
+        \subsubsection*{Summary of Key Findings and Research Gap}
+
+        The predictive performance of various data modalities for adolescent mental health prediction is summarized in Table~\ref{tab:multimodal_comparison}. Behavioral questionnaires show a strong ability to predict outcomes (ROC-AUC $\approx$ 0.78), whereas neuroimaging alone provides moderate predictive performance (ROC-AUC $\approx$ 0.72). Neuroimaging, when paired with demographic or genetic data, reaches a ROC-AUC of approximately 0.70. Multimodal methods, such as speech and audiovisual-text fusion, show higher AUROC values between 0.84 and 0.94. However, many of these approaches do not incorporate twin-aware evaluation, which could lead to an overestimation of their performance. The proposed twin-aware framework on the QTAB dataset combines questionnaires, MRI, and demographic/genetic features, achieving a ROC-AUC of 0.8935(95\% CI: 0.792--0.969), an F1-score of 0.60 (95\% CI: 0.417--0.824), and a recall of 0.857, indicating improved predictive performance relative to unimodal approaches.
+
+ 
+\begin{table*}[!t]
+\begin{adjustwidth}{-2.25in}{0in}
+\centering
+\caption{\textbf{\hl{Prior Study Limitations and Twin-Split Framework Solutions}}}
+\label{tab:prior_limitations}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+
+\begin{tabular}{|p{2.8cm}|p{2.0cm}|p{3.8cm}|p{4.5cm}|p{4.8cm}|}
+\hline
+\textbf{Study Category} & \textbf{Ref} & \textbf{Research Gap} & \textbf{Key Findings} & \textbf{Proposed Methodological Solution} \\
+\hline
+
+Multimodal Detection \& Fusion
+& \cite{ref1}, \cite{ref2}, \cite{ref3}, \cite{ref4}
+& Dataset-specific evaluation, limited metrics, and social media or controlled-setting bias
+& Multimodal learning improves mental health prediction accuracy but lacks generalizability and reproducibility across diverse datasets.
+& Validate models using longitudinal twin-split multimodal datasets to achieve leakage-free evaluation and improved generalization. \\
+\hline
+
+Ensemble \& Hybrid Deep Learning
+& \cite{ref5}--\cite{ref8}
+& Overfitting, class imbalance, and sensitivity to missing modalities
+& Ensemble and hybrid deep learning methods improve predictive performance but remain vulnerable to imbalanced data and incomplete modalities.
+& Introduce prototype-based cross-modal attention to improve robustness and flexible multimodal fusion under missing-data conditions. \\
+\hline
+
+Passive Sensing \& Behavioral Analysis
+& \cite{ref9}, \cite{ref12}
+& Privacy concerns, noisy sensing data, demographic bias, and inconsistent labels
+& Passive sensing and behavioral features provide continuous monitoring but suffer from contextual variability and heterogeneous data quality.
+& Integrate behavioral, neuroimaging, and demographic information using standardized clinical assessments to improve reliability. \\
+\hline
+
+Transformer \& LLM-based Methods
+& \cite{ref16}, \cite{ref17}, \cite{ref20}, \cite{ref21}
+& High computational cost, platform bias, limited interpretability, and poor performance on small datasets
+& Transformer and LLM-based approaches achieve strong predictive accuracy but require large-scale data and remain difficult to interpret clinically.
+& Employ few-shot prototypical learning with cross-modal attention to improve explainability and generalization in limited-data settings. \\
+\hline
+
+Neuroimaging \& MRI-based Methods
+& \cite{ref23}, \cite{ref24}, \cite{ref25}, \cite{ref27}
+& Limited predictive power of imaging alone, small cohort sizes, and insufficient longitudinal validation
+& MRI and neuro-genomic fusion improve prediction but perform less effectively without complementary behavioral and demographic information.
+& Combine MRI, questionnaire, and phenotypic data within a leakage-free twin-split multimodal framework to enhance prediction robustness and longitudinal validity. \\
+\hline
+
+\end{tabular}
+
+\begin{flushleft}
+\hl{Table notes: Summary of major limitations identified in existing multimodal mental health prediction studies and the corresponding methodological strategies proposed in this work. The proposed twin-split multimodal framework leverages longitudinal QTAB data to mitigate data leakage, improve generalization, enhance interpretability, and disentangle genetic and environmental influences on adolescent mental health prediction.}
+\end{flushleft}
+
+\end{adjustwidth}
+\end{table*}
+
+        Prior studies on adolescent mental health prediction indicate that multimodal approaches generally outperform unimodal methods by integrating behavioral, neuroimaging, linguistic, and demographic data. Federated learning has emerged as a promising paradigm for privacy-preserving healthcare by enabling collaborative model training without sharing sensitive patient data, although challenges such as scalability, communication efficiency, and heterogeneous data distributions remain active research areas \cite{ref66}. However, several limitations persist, including dataset-specific evaluations, restricted performance metrics, and the lack of genetic or familial modeling, particularly in twin-based cohorts, which can result in data leakage and inflated performance estimates. Neuroimaging-only models often exhibit reduced accuracy due to small sample sizes and limited contextual integration, while complex fusion architectures are prone to overfitting and sensitivity to missing modalities. These key limitations alongside the associated research gaps are summarized in Table~\ref{tab:prior_limitations}.
+
+
+        To address these challenges, this study proposes a twin-aware multimodal deep learning framework applied to the QTAB cohort for early prediction of adolescent anxiety. The framework integrates structural MRI, validated behavioral questionnaires, and demographic information through modality specific encoders that incorporate multimodal self-attention. The resulting unimodal probability estimates are combined using optimized weighted late fusion (MRI: 23\%, questionnaires: 63\%, demographics: 14\%). The proposed framework achieves an AUC of 0.8935 (95\% CI: 0.792-0.969), with a sensitivity of 85.7\% and a specificity of 87.3\%. Although AUC differences did not reach statistical significance under the current sample size (DeLong $p > 0.05$), multimodal fusion produced significantly different classification patterns compared to the questionnaire-only baseline(McNemar $p = 0.0008$).
+
+
+
+        \section*{Methodology}
+
+        This work proposes a twin-aware multimodal framework for early prediction of incident anxiety disorders in adolescents. The methodology integrates structural neuroimaging with behavioral and phenotypic information while explicitly addressing key methodological challenges in psychiatric prediction studies, including co-twin data leakage, severe class imbalance, and limited sample sizes. A family-level data splitting strategy and decision-level multimodal fusion are employed to ensure unbiased generalization, interpretability, and clinical relevance. 
+
+        % Figure 1 caption - figure file to be uploaded separately (Fig1_Overall_Framework.png)
+        \begin{figure}[!h]
+        \caption{\textbf{Overall multimodal framework with decision-level fusion.}
+        The proposed architecture includes three independently trained modules: MRI-based neuroimaging analysis, questionnaire-based behavioral modeling, and phenotypic feature learning integrated through optimized weighted late fusion.}
+        \label{fig:main}
+        \end{figure}
+
+        The proposed architecture includes three independently trained modules: MRI-based neuroimaging analysis, questionnaire-based behavioral modeling, and phenotypic feature learning, as shown in Fig~\ref{fig:main}.
+
+        \subsection*{Dataset Description}
+
+        \subsubsection*{\textbf{Queensland Twin Adolescent Brain (QTAB) Dataset}}
+
+        The study utilizes the Queensland Twin Adolescent Brain (QTAB) dataset~\cite{ref31}, a longitudinal cohort consisting of monozygotic (MZ) and dizygotic (DZ) twin adolescents designed to investigate genetic and environmental influences on brain development and mental health. Data access was obtained under institutional review board approval with full ethical compliance.
+
+
+        \hl{The QTAB dataset encompasses 478 adolescent participants in total across both study waves. At baseline (Wave 1), complete structural MRI, behavioral questionnaire, and phenotypic data were available for 422 twin adolescents from 211 families (211 twin pairs). The discrepancy between 422 baseline completers and 478 total participants arises because 56 additional participants contributed data at Wave 2 only or had incomplete multimodal records at baseline and were therefore excluded from the present analysis. Of the 422 baseline participants, 304 had complete data across all three modalities and formed the analysis sample for this study (38 incident anxiety positive; 266 negative), yielding a prevalence of 12.5\% for incident anxiety disorder at follow-up. The remaining 118 baseline participants were excluded due to incomplete MRI acquisition ($n = 67$), missing questionnaire responses ($n = 31$), or incomplete phenotypic records ($n = 20$).}
+
+                                            This strategy preserves class distributions, avoids inflated performance due to shared genetic information, and provides unbiased estimates of generalization performance.
+
+                                            \subsection*{Module 1: MRI-Based Forecasting Module}
+
+                                            \subsubsection*{\textbf{MRI Preprocessing}}
+
+                                            % Figure 2 caption - figure file to be uploaded separately (Fig2_MRI_Preprocessing.png)
+                                            \begin{figure}[!h]
+                                            \caption{\textbf{Module 1: MRI-Based Forecasting Module pipeline.}
+                                            The figure illustrates the complete MRI preprocessing pipeline including skull stripping, bias field correction, spatial normalization, intensity normalization, and the 3D CNN architecture with residual blocks for neuroanatomical feature extraction.}
+                                            \label{fig:module1}
+                                            \end{figure}
+
+                                            Fig~\ref{fig:module1} illustrates the MRI preprocessing pipeline and the MRI-based forecasting module.
+
+                                            T1-weighted structural MRI volumes undergo a standardized and fully reproducible preprocessing pipeline implemented in Python. The pipeline minimizes non-biological variability while preserving anatomical integrity:
+                                            \begin{itemize}
+                                                \item \textbf{Skull stripping:} Multi-threshold Otsu segmentation followed by morphological operations to remove non-brain tissue.
+                                                    \item \textbf{Bias field correction:} N4 correction to address radiofrequency-induced intensity inhomogeneity.
+                                                        \item \textbf{Spatial normalization:} Affine registration to MNI152 space using mutual information optimization.
+                                                            \item \textbf{Intensity normalization:} Z-score normalization within the brain mask:
+                                                            \end{itemize}
+
+                                                            \begin{equation}
+                                                            \text{Normalized data} = \frac{\text{data} - \mu}{\sigma}
+                                                            \end{equation}
+
+                                                            The standard formulation presented in \hl{Eq~(1)} is utilized for Z-score normalization~\cite{ref47}. Quality control procedures verify spatial dimensions, numerical stability, sufficient brain voxel counts, and normalization statistics.
+
+                                                            \subsubsection*{\textbf{3D Convolutional Neural Network Architecture}}
+
+                                                            Neuroanatomical representations are learned using a 3D residual convolutional neural network designed to capture hierarchical brain structure while maintaining stable optimization. The network processes volumes of size $91 \times 109 \times 91$ voxels and consists of an initial convolutional layer, max pooling, and six residual blocks with increasing channel depth. Residual connections mitigate vanishing gradients and enable deeper feature learning~\cite{ref63}.
+
+                                                            Global average pooling produces a 384-dimensional feature vector representing the entire brain volume.
+
+                                                            \begin{itemize}
+                                                                \item \textbf{Transfer Learning:} The network is initialized using pretrained weights from a large-scale brain age prediction model trained on more than 15,000 T1-weighted MRI scans~\cite{ref64}. This transfer learning strategy provides anatomically meaningful feature priors and improves convergence under limited pediatric neuroimaging sample sizes.
+                                                                    \item \textbf{Feature Expansion and Normalization:} The 384-dimensional representation is linearly projected into a 768-dimensional embedding space to increase representational capacity for anxiety-related neuroanatomical patterns. The resulting embedding is L2-normalized to constrain all features to a unit hypersphere, improving training stability and compatibility with downstream fusion.
+                                                                        \item \textbf{Fine-Tuning and Regularization:} The network is fine-tuned end-to-end using supervised binary classification with cross-entropy loss and Adam optimization. Regularization strategies include dropout in fully connected layers, weight decay, and validation-based early stopping. Earlier layers are updated with lower learning rates to preserve pretrained anatomical representations.
+                                                                        \end{itemize}
+
+                                                                        \subsubsection*{\textbf{Feature Extraction and Augmentation}}
+
+                                                                        For each participant, a 768-dimensional embedding is extracted from the penultimate layer in inference mode. Embeddings are further standardized using robust scaling based on median and interquartile range to reduce sensitivity to outliers.
+
+                                                                        To address class imbalance, feature-space augmentation is applied to positive-class embeddings using additive Gaussian noise and feature dropout, increasing variability without modifying the original image data.
+
+                                                                        \subsubsection*{\textbf{Feature Selection and Classification}}
+
+                                                                        The MRI module follows a two-stage modeling pipeline. In the first stage, the fine-tuned 3D CNN is used in inference mode to extract a 768-dimensional embedding for each participant from the penultimate network layer. These embeddings represent high-level structural neuroimaging features learned during CNN training.
+
+                                                                        In the second stage, the extracted embeddings are used as input to an independent ensemble classification framework. Recursive Feature Elimination with Cross-Validation (RFECV) is applied using a Random Forest estimator (100 trees, maximum depth 5, balanced class weights) with 3-fold stratified cross-validation and ROC-AUC scoring. Features are removed in steps of 30, with a minimum of 30 retained. In practice, RFECV retained the full 768-dimensional feature set, indicating that no single feature was consistently uninformative across folds. The selected embeddings are then used to train multiple classifiers, including Random Forest, LightGBM, and XGBoost variants, as well as a stacking meta-learner with logistic regression. Probability outputs are calibrated using isotonic regression or Platt scaling, and ensemble performance is evaluated on the validation set. The unimodal MRI probability $P_{\text{MRI}}$ is taken from the best performing classifier (Random Forest; test AUC = 0.745). \hl{Classifier selection was performed exclusively on the validation set AUC (Random Forest validation AUC = 0.6987); the test AUC of 0.7455 was computed solely for reporting purposes after all model selection decisions had been finalized and did not influence any modeling choice. This procedure ensures there is no test-set leakage in Module~1 classifier selection.}
+
+                                                                        Importantly, the CNN training and ensemble classifier training are sequential and independent. Once the CNN has been trained, its parameters are frozen and embeddings are extracted in inference mode. This ensures that the downstream ensemble classifier operates on fixed representations and prevents information leakage between stages.
+
+                                                                        \subsubsection*{\textbf{Multimodal Framework Integration}}
+
+                                                                        The 768-dimensional MRI embeddings and the resulting unimodal probability estimates are stored for integration within the multimodal prediction framework. These neuroimaging-derived features provide complementary biological information that augments the behavioral questionnaire representations from Module~2 and the static phenotypic features from Module~3. Final predictions are obtained through calibrated weighted late fusion of the three modality-specific probability outputs.
+
+                                                                        \subsection*{Module 2: Questionnaire Based Forecasting Module}
+
+                                                                        \subsubsection*{\textbf{Overall Module2 Overview}}
+                                                                        Module 2 models baseline anxiety-related questionnaires (child- and parent-reported), capturing behavioral symptom expression complementary to neuroimaging and static context. A strict leakage-aware preprocessing pipeline removes aggregate scores, followed by correlation-based feature selection and a prototypical network optimized for class imbalance and few-shot learning. The module outputs 32-D L2-normalized embeddings for fusion. 
+
+                                                                        % Figure 3 caption - figure file to be uploaded separately (Fig3_Questionnaire_Pipeline.png)
+                                                                        \begin{figure}[!h]
+                                                                        \caption{\textbf{Module 2: Questionnaire-based prototypical learning pipeline.}
+                                                                        The figure shows the complete preprocessing workflow including feature extraction from SCAS/pSCAS, SMFQ/pSMFQ, and SDQ/pSDQ questionnaires, leakage-aware filtering, correlation-based feature selection, and the prototypical network architecture with residual encoders, self-attention mechanism, and multi-head prototype learning.}
+                                                                        \label{fig:module2}
+                                                                        \end{figure}
+
+                                                                        Fig~\ref{fig:module2} illustrates the preprocessing pipeline and the questionnaire-based forecasting module.
+
+                                                                        \subsubsection*{\textbf{Feature Extraction and Preprocessing}}
+                                                                        Baseline questionnaire features form an initial set of 109 validated items spanning SCAS/pSCAS (six anxiety domains), SMFQ/pSMFQ, and SDQ/pSDQ. To prevent leakage, aggregate scores and direct outcome proxies are removed (e.g., \texttt{SCAS\_score}, \texttt{pSCAS\_score}, domain totals such as \texttt{SCAS\_sepanx\_score}, \texttt{pSCAS\_sepanx\_score}, \\
+                                                                        \texttt{SCAS\_panago\_score}, \texttt{pSCAS\_panago\_score}, and depressive totals \texttt{SMFQ\_score},\\
+                                                                         \texttt{pSMFQ\_score}); administrative identifiers (e.g., \texttt{subject\_id}, \texttt{session}) are excluded. Median imputation is used for missing values; standardization follows:
+                                                                         \begin{equation}
+                                                                         x_{\text{standardized}} = \frac{x - \mu}{\sigma}
+                                                                         \end{equation}
+                                                                         as standard preprocessing~\cite{ref48}. \hl{Eq~(2)} illustrates Z-score standardization, a method in which features are modified to have a mean of zero and a variance of one, as commonly discussed in data preprocessing literature~\cite{ref48}.
+
+                                                                         \subsubsection*{\textbf{Feature Selection}}
+                                                                         Absolute Pearson correlation with the binary outcome is computed on the combined training and validation partitions (n = 242) rather than training data alone (n = 180). This decision was motivated by severe class imbalance: the training partition contains only 24 positive cases (13.3\%), leading to highly unstable correlation estimates when computed on training data alone. Computing correlations on the combined train+val set (31 positive cases total) substantially improves the statistical reliability of feature ranking. However, we explicitly acknowledge that this approach introduces minor information leakage, as validation labels (7 positive cases) partially inform which features are selected. This represents a methodological limitation necessitated by the sample size constraints of the QTAB dataset. The top 40 features are selected based on absolute correlation (range $\approx$ 0.15 to 0.232), including parent-reported anxiety items and broader emotional and behavioral measures. Future studies with larger cohorts should adopt strictly nested cross-validation or training-only feature selection to eliminate this dependency entirely, at the cost of potentially less stable feature rankings in severely imbalanced settings.
+
+                                                                         \subsubsection*{\textbf{Prototypical Network Architecture}}
+                                                                         The 40-D input is projected to 64-D:
+                                                                         \begin{equation}
+                                                                         \mathbf{h}_0 = \mathbf{W}_1 \mathbf{x} + \mathbf{b}_1
+                                                                         \end{equation}
+                                                                         Eq~(4.3) defines a linear input projection layer commonly used in neural networks to map low-dimensional feature representations into a higher-dimensional latent space~\cite{ref49}. Two residual encoder blocks (Linear $\rightarrow$ LayerNorm $\rightarrow$ GELU $\rightarrow$ Dropout 0.2) compute:
+
+                                                                         The first encoder block transforms the projected features:
+                                                                         \begin{equation}
+                                                                             \mathbf{h}_1 = \text{Dropout}\left(\text{GELU}\left(\text{LayerNorm}\left(\text{Linear}(\mathbf{h}_0)\right)\right)\right)
+                                                                             \end{equation}
+
+                                                                             The second encoder block processes $\mathbf{h}_1$:
+                                                                             \begin{equation}
+                                                                                 \mathbf{h}_2 = \text{Dropout}\left(\text{GELU}\left(\text{LayerNorm}\left(\text{Linear}(\mathbf{h}_1)\right)\right)\right)
+                                                                                 \end{equation}
+
+                                                                                 The encoder structure in Eqs~(3)--(7), incorporating linear transformations, layer normalization, GELU activation, dropout, and residual connections, is inspired by Transformer-style encoder architectures~\cite{ref50}.
+
+                                                                                 Residual connections are made between encoder blocks:
+                                                                                 \begin{align}
+                                                                                     \mathbf{h}_1^{\text{residual}} &= \mathbf{h}_0 + \mathbf{h}_1 \\
+                                                                                         \mathbf{h}_2^{\text{residual}} &= \mathbf{h}_1 + \mathbf{h}_2
+                                                                                         \end{align}
+
+                                                                                         These connections help permit gradient flow in backpropagation, arresting the vanishing gradient problem and allowing incremental feature refinements to be learned ~\cite{ref50}.
+                                                                                         \subsubsection*{\textbf{Feature Transformation Layer}}
+
+                                                                                                         \hl{The intermediate representation $\mathbf{h}_2^{\text{residual}}$ is passed to a feature transformation layer that applies batch-level cross-sample attention to enhance discriminative capacity. For a batch of $n$ samples, the batch matrix $\mathbf{H} \in \mathbb{R}^{n \times 64}$ is projected into query, key, and value matrices:}
+                                                                                                         \begin{align}
+                                                                                                             \mathbf{Q} &= \mathbf{H} \mathbf{W}_Q \\
+                                                                                                                 \mathbf{K} &= \mathbf{H} \mathbf{W}_K \\
+                                                                                                                     \mathbf{V} &= \mathbf{H} \mathbf{W}_V
+                                                                                                                     \end{align}
+                                                                                                                     \hl{where $\mathbf{W}_Q, \mathbf{W}_K, \mathbf{W}_V \in \mathbb{R}^{64 \times 64}$ are learnable weight matrices, yielding $\mathbf{Q}, \mathbf{K}, \mathbf{V} \in \mathbb{R}^{n \times 64}$. The attention matrix is then computed over the full batch:}
+                                                                                                     \begin{equation}
+                                                                                                         \mathbf{A} = \text{softmax}\!\left(\frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{64}}\right) \in \mathbb{R}^{n \times n}
+                                                                                                         \end{equation}
+                                                                                                         \hl{This batch-level formulation produces a non-degenerate attention distribution: $\mathbf{A}$ has $n$ distinct rows each summing to 1 over $n$ elements, contextualizing each sample relative to all others in the batch. This is cross-sample attention, not a per-sample scalar softmax. The attended output and residual connection are:}
+                                                                                                         \begin{equation}
+                                                                                                             \mathbf{H}_{\text{attended}} = \mathbf{A}\mathbf{V}
+                                                                                                             \end{equation}
+                                                                                                             \begin{equation}
+                                                                                                                 \mathbf{H}_{\text{out}} = \mathbf{H}_{\text{attended}} + \mathbf{H}
+                                                                                                                 \end{equation}
+                                                                                                                 \hl{This design allows the encoder to capture inter-sample relationships within each training batch, which is particularly valuable for the severely class-imbalanced QTAB cohort where batch composition affects the quality of learned similarity structure~\cite{ref51}.}
+
+                                                                                                                 \subsubsection*{\textbf{Multi-Head Prototype Learning}}
+                                                                                                                 The 32-D embedding is partitioned into four 8-D heads. Class prototypes are initialized by class means:
+                                                                                                                 \begin{equation}
+                                                                                                                 \mathbf{p}_c = \frac{1}{N_c}\sum_{i\in\mathcal{S}_c}\mathbf{e}_i
+                                                                                                                 \end{equation}
+                                                                                                                 A learnable refinement is applied:
+                                                                                                                 \begin{equation}
+                                                                                                                 \Delta \mathbf{p}_c = \tanh\left(\text{Linear}(\mathbf{p}_c)\right),\quad
+                                                                                                                 \mathbf{p}_c^{\text{refined}} = \mathbf{p}_c + 0.1\times \Delta \mathbf{p}_c
+                                                                                                                 \end{equation}
+                                                                                                                 \begin{equation}
+                                                                                                                 \mathbf{p}_c^{\text{final}} = \frac{\mathbf{p}_c^{\text{refined}}}{\|\mathbf{p}_c^{\text{refined}}\|_2}
+                                                                                                                 \end{equation}
+                                                                                                                 Per-head cosine similarity:
+                                                                                                                 \begin{equation}
+                                                                                                                 s_c^h = \frac{\mathbf{e}^h \cdot \mathbf{p}_c^h}{\|\mathbf{e}^h\|_2\|\mathbf{p}_c^h\|_2}
+                                                                                                                 \end{equation}
+                                                                                                                 Temperature scaling:
+                                                                                                                 \begin{equation}
+                                                                                                                 \tilde{s}_c^h = \frac{s_c^h}{\tau}
+                                                                                                                 \end{equation}
+                                                                                                                 Averaged score and softmax:
+                                                                                                                 \begin{equation}
+                                                                                                                 s_c = \frac{1}{4}\sum_{h=1}^{4}\tilde{s}_c^h,\quad
+                                                                                                                 P(c \mid \mathbf{e}) = \frac{\exp(s_c)}{\sum_{c'}\exp(s_{c'})}
+                                                                                                                 \end{equation}
+                                                                                                                 Eqs~(14)--(19) implement the multi-head prototype similarity computation, where embeddings and prototypes are divided into subspaces, cosine similarity is computed per head, and a learnable temperature scales the scores before softmax-based probability estimation, following standard practices in prototypical network and metric-based few-shot learning frameworks~\cite{ref52}
+                                                                                                                  
+                                                                                                                  \subsection*{Loss Function}
+                                                                                                                  The total objective combines focal, center, and contrastive losses:
+                                                                                                                  \begin{equation}
+                                                                                                                  \mathcal{L}_{\text{focal}} = -\frac{1}{N}\sum_{i=1}^{N}\alpha(1-\hat{p}_i)^\gamma \log(\hat{p}_i)
+                                                                                                                  \end{equation}
+                                                                                                                  with $\alpha=0.75$, $\gamma=2.0$,
+                                                                                                                  \begin{equation}
+                                                                                                                  \mathcal{L}_{\text{center}} = \frac{1}{N}\sum_{i=1}^{N}\|\mathbf{e}_i - \mathbf{c}_{y_i}\|_2^2
+                                                                                                                  \end{equation}
+                                                                                                                  and positive-only contrastive separation:
+                                                                                                                  \begin{equation}
+                                                                                                                  \mathcal{L}_{\text{contrastive}}=\frac{1}{N_{\text{pos}}}\sum_{i\in \text{pos}}
+                                                                                                                  \max\left(0,\, m-\cos(\mathbf{e}_i,\mathbf{p}_{\text{pos}})+\cos(\mathbf{e}_i,\mathbf{p}_{\text{neg}})\right)
+                                                                                                                  \end{equation}
+                                                                                                                  with $m=0.3$. Total:
+                                                                                                                  \begin{equation}
+                                                                                                                  \mathcal{L}_{\text{total}}=
+                                                                                                                  \mathcal{L}_{\text{focal}} + 0.01\times\mathcal{L}_{\text{center}} + 0.3\times\mathcal{L}_{\text{contrastive}}
+                                                                                                                  \end{equation}
+                                                                                                                  Gradient clipping uses max L2 norm 1.0. 
+                                                                                                                  The training objective in Eqs~(20)--(23) combines focal loss for class-imbalanced classification~\cite{ref53}, center loss to encourage intra-class compactness~\cite{ref54}, and contrastive loss to enforce inter-class separation~\cite{ref55}, following established practices in deep learning~\cite{ref50}.
+
+                                                                                                                  \subsection*{Augmentation and Training}
+                                                                                                                  To mitigate imbalance, positive samples are duplicated with Gaussian noise:
+                                                                                                                  \begin{equation}
+                                                                                                                  \mathbf{x}_{\text{aug}} = \mathbf{x}_{\text{original}} + \boldsymbol{\epsilon},\quad
+                                                                                                                  \boldsymbol{\epsilon}\sim \mathcal{N}(\mathbf{0},0.05^2\mathbf{I})
+                                                                                                                  \end{equation}
+                                                                                                                  The copy-paste Gaussian noise augmentation in \hl{Eq~(24)} follows standard data augmentation practices used to mitigate class imbalance in deep learning~\cite{ref56}. Augmentation is applied only to training. Episodic training uses a 60:40 support/query stratified split each epoch. Optimization uses AdamW for 150 epochs (initial LR 0.002, weight decay 0.01, one-cycle schedule peaking at 0.005 during first 30\%). Best checkpoint is selected by validation AUC-ROC. The trained encoder produces 32-D embeddings for fusion. Reported test AUC is 0.782.
+
+                                                                                                                  \section*{Module 3: Phenotypic-Based Forecasting Module}
+                                                                                                                  Module 3 follows the same leakage-aware preprocessing and prototypical-learning design as Module 2, adapted to static phenotypic inputs. It models 76 standardized static variables (from an initial 84) spanning demographics, socioeconomic indices (IRSD/IEO), physiological measures, psychosocial context (e.g., social support, adversity, bullying), and twin zygosity indicators (\texttt{zyg\_MZ}, \texttt{zyg\_DZ}), while excluding administrative identifiers (e.g., \texttt{participant\_id}, \texttt{family\_id}, \texttt{session}) and leaky outcome-related totals (e.g., SMFQ total score). Missing values are imputed via median; standardization is:
+                                                                                                                  \begin{equation}
+                                                                                                                  x_{\text{standardized}} = \frac{x - \mu}{\sigma}
+                                                                                                                  \end{equation}
+                                                                                                                  The encoder uses the same residual + self-attention + multi-head prototype learning paradigm as Module 2, but projects 76-D inputs into a higher hidden space and outputs 64-D L2-normalized embeddings (four 16-D heads). The same focal/center/contrastive loss composition and episodic training strategy are applied, with copy-paste Gaussian augmentation on positives:
+                                                                                                                  \begin{align}
+                                                                                                                  \mathbf{x}_{\text{aug1}} &= \mathbf{x}_{\text{original}} + \boldsymbol{\epsilon}_1,\;\boldsymbol{\epsilon}_1 \sim \mathcal{N}(\mathbf{0}, 0.05^2 \mathbf{I})\\
+                                                                                                                  \mathbf{x}_{\text{aug2}} &= \mathbf{x}_{\text{original}} + \boldsymbol{\epsilon}_2,\;\boldsymbol{\epsilon}_2 \sim \mathcal{N}(\mathbf{0}, 0.08^2 \mathbf{I})
+                                                                                                                  \end{align}
+                                                                                                                  Embeddings are extracted deterministically for all splits and saved for fusion. Reported test AUC is 0.717 ($0.717\pm 0.05$), consistent with weak univariate correlations (max absolute correlation 0.187) but meaningful multivariate predictive signal.
+
+                                                                                                                  Static phenotypic features encompassed demographic attributes, socioeconomic metrics, physiological measures, psychosocial context variables, and indicators of twin zygosity. We excluded administrative identifiers and leaky variables. We filled in missing values with medians and standardized all features.
+
+                                                                                                                  % Figure 4 caption - figure file to be uploaded separately (Fig4_Prototypical_Network.png)
+                                                                                                                  \begin{figure}[!h]
+                                                                                                                  \caption{\textbf{Architecture of the advanced prototypical network used for behavioral and phenotypic feature encoding.}
+                                                                                                                  The model incorporates feature transformation layers, prototype learning, and residual encoders to improve discriminative representation of anxiety-related patterns. The architecture features dual residual encoders, query-key-value projection layers, L2-normalized embeddings, and multi-head prototype learning aimed at predicting anxiety risk effectively.}
+                                                                                                                  \label{fig:proto_architecture}
+                                                                                                                  \end{figure}
+
+                                                                                                                  A network architecture similar to Module 2 was employed, resulting in 64-dimensional L2-normalized embeddings. Multi-head prototype learning facilitated strong representation of weak yet complementary static risk signals. The architecture of the advanced prototypical network is illustrated in Fig~\ref{fig:proto_architecture}.
+
+
+                                                                                                                  \section*{Multimodal Fusion Architecture}
+                                                                                                                  \subsection*{Probability Calibration}
+
+                                                                                                                  Before fusion, the predicted probabilities from each unimodal model are calibrated to ensure they represent well-calibrated confidence estimates suitable for weighted averaging. For each module, isotonic regression calibration~\cite{ref48} is applied using the validation set predictions. Specifically, the raw probability outputs $P_{\text{raw}}$ from each modality-specific classifier are transformed via isotonic regression:
+                                                                                                                  \begin{equation}
+                                                                                                                  P_{\text{calibrated}} = f_{\text{isotonic}}(P_{\text{raw}})
+                                                                                                                  \end{equation}
+                                                                                                                  where $f_{\text{isotonic}}$ is a monotonic piecewise-constant function fitted to minimize calibration error on the validation set. Isotonic regression was selected over Platt scaling due to its non-parametric nature and superior flexibility under severe class imbalance, where parametric sigmoid assumptions may not hold. The calibrator is fitted on validation set predictions only (separate from training), and the same fitted calibrator is then applied to test set predictions. Calibrated probabilities from all three modules are used for all downstream fusion experiments, ensuring that the weighted averaging operates over well-calibrated probability estimates.
+
+                                                                                                                  \subsection*{Late Fusion Strategy}
+
+                                                                                                                  Decision-level fusion combines calibrated probability outputs from the three modules:
+                                                                                                                  \begin{equation}
+                                                                                                                  P_{\text{multimodal}} = w_1 P_{\text{MRI}} + w_2 P_{\text{Questionnaire}} + w_3 P_{\text{Static}}
+                                                                                                                  \end{equation}
+                                                                                                                  subject to:
+                                                                                                                  \begin{equation}
+                                                                                                                  w_1+w_2+w_3=1
+                                                                                                                  \end{equation}
+                                                                                                                  Decision-level late fusion is selected to preserve unimodal encoders, reduce overfitting risk under limited data, and provide interpretable modality contributions. This approach is particularly appropriate for small-sample clinical settings where learned cross-modal fusion (e.g., attention-based integration) risks overfitting complex interaction parameters~\cite{ref47}. Each candidate weight configuration is used to fuse multimodal predictions according to Eq~(28), with optimal weights chosen by maximizing the AUC of the validation set as outlined in Eq~(29).
+
+                                                                                                                  \subsection*{Weight Optimization}
+                                                                                                                  Weights are optimized via constrained grid search on the validation set:
+                                                                                                                  \begin{align}
+                                                                                                                  w_1 &\in [0.15,0.45],\quad
+                                                                                                                  w_2 \in [0.35,0.65],\quad
+                                                                                                                  w_3 \in [0.10,0.45]
+                                                                                                                  \end{align}
+                                                                                                                  with step size 0.02 and numerical tolerance $\epsilon=0.001$ enforcing $w_1+w_2+w_3=1$. For each candidate:
+                                                                                                                  \begin{equation}
+                                                                                                                  P_{\text{multimodal}} = w_1 P_{\text{M1}} + w_2 P_{\text{M2}} + w_3 P_{\text{M3}}
+                                                                                                                  \end{equation}
+                                                                                                                  Validation AUC-ROC is computed and the optimal weights are selected:
+                                                                                                                  \begin{equation} \{w_1^*, w_2^*, w_3^*\} = \argmax_{w_1,w_2,w_3}\text{AUC}_{\text{validation}}(w_1,w_2,w_3) \end{equation}
+                                                                                                                  The optimal fusion weights are selected by maximizing validation-set AUC as formalized in Eqs~(31) and (32)~\cite{ref59}.
+
+                                                                                                                  \hl{The search ranges for each fusion weight were informed by the unimodal AUC ranking: questionnaire (AUC = 0.7766) $>$ MRI (AUC = 0.7455) $>$ phenotypic (AUC = 0.6961). Accordingly, the questionnaire weight was searched in $[0.30, 0.80]$, MRI in $[0.10, 0.50]$, and phenotypic in $[0.05, 0.30]$, with all weights constrained to sum to 1. With a step size of 0.02, the feasible simplex contains more than 9{,}000 unique combinations, providing sufficient resolution to identify a near-optimal weighting.}
+
+                                                                                                                  \subsection*{Threshold Selection and Calibration}
+                                                                                                                  Binary decisions use a threshold $\tau$:
+                                                                                                                  \begin{equation}
+                                                                                                                  \hat{y}_i =
+                                                                                                                  \begin{cases}
+                                                                                                                  \text{anxiety-positive} & \text{if } P_{\text{multimodal}}(i)\ge \tau\\
+                                                                                                                  \text{anxiety-negative} & \text{if } P_{\text{multimodal}}(i)< \tau
+                                                                                                                  \end{cases}
+                                                                                                                  \end{equation}
+                                                                                                                  Eq~(33) defines the conversion of continuous multimodal probabilities into binary anxiety classifications using a decision threshold~\cite{ref60}.
+                                                                                                                  Youden's $J$ statistic is used:
+
+                                                                                                                  \begin{align}
+                                                                                                                  J(\tau) &= \text{sensitivity}(\tau) + \text{specificity}(\tau) - 1 \\
+                                                                                                                          &= \text{TPR}(\tau) - \text{FPR}(\tau) \notag
+                                                                                                                          \end{align}
+
+                                                                                                                          \begin{equation}
+                                                                                                                          \tau_{\text{optimal}} = \arg\max_{\tau} J(\tau)
+                                                                                                                          \end{equation}
+
+                                                                                                                          Eqs~(34) and (35) define Youden's J statistic and the selection of the threshold that maximizes the sum of sensitivity and specificity~\cite{ref61}. Robustness is evaluated at fixed thresholds at values given in Eq~(36)~\cite{ref60}:
+                                                                                                                          \begin{equation}
+                                                                                                                          \tau \in \{0.40,0.45,0.50,0.55,0.60\}
+                                                                                                                          \end{equation}
+
+                                                                                                                          \subsection*{\hl{Validation Set Usage Transparency}}
+                                                                                                          \hl{In the interest of full methodological transparency, we enumerate every use of the validation partition in the construction of the final fusion model:}
+                                                                                                          \begin{enumerate}
+                                                                                                              \item \hl{\textbf{Questionnaire feature selection:} Pearson correlations between each questionnaire item and the binary anxiety label were computed on the combined training and validation sets ($n = 242$, 31 positive cases). This approach was adopted because restricting feature selection to the training partition alone ($n = 180$, 24 positive cases) produces highly unstable Pearson estimates under severe class imbalance; the inclusion of 7 additional validation positives (a 29\% increase in positive count) substantially reduces estimation variance. This constitutes a minor information leak from the validation partition and is acknowledged as a methodological limitation .}
+                                                                                                              \item \hl{\textbf{Probability calibration:} Isotonic regression calibrators for all three modules were fitted on the module probability outputs for the validation set.}
+                                                                                                              \item \hl{\textbf{Fusion weight optimization:} Weights $w_1, w_2, w_3$ (where $w_1 + w_2 + w_3 = 1$) were selected by exhaustive grid search maximizing AUC on the validation set, yielding $w_{\text{MRI}} = 0.23$, $w_{\text{questionnaire}} = 0.63$, $w_{\text{phenotypic}} = 0.14$.}
+                                                                                                              \item \hl{\textbf{Decision threshold selection:} The operating threshold was selected via Youden's $J$ statistic computed on validation set predictions.}
+                                                                                                              \item \hl{\textbf{Early stopping:} For the 3D-CNN (Module~1), training was stopped at the epoch yielding maximum validation AUC.}
+                                                                                                              \item \hl{\textbf{MRI classifier selection:} Among five candidate classifiers, the Random Forest was selected based on validation AUC = 0.6987.}
+                                                                                                          \end{enumerate}
+                                                                                                          \hl{Given that the validation set contains only 7 positive cases, all six of these decisions are necessarily high-variance. The reported fusion weights and calibration curves should be interpreted as exploratory due to the uncertainty inherent in the single-partition design.}
+
+                                                                                                          \subsection*{\hl{Calibration Sensitivity Analysis}}
+                                                                                                          \hl{To assess the reliability of calibration with only 7 validation positive cases, we compared isotonic regression (non-parametric, piece-wise monotone) with Platt scaling (parametric sigmoid calibration). Both calibrators were fitted on the same validation set predictions. Calibration curves for all three modules showed similar reliability diagrams under both methods, with mean calibration error differences below 0.02 across decile bins. We report isotonic regression results as the primary calibration method, consistent with our pre-specified pipeline, and note that both approaches converge to similar probability estimates in this low-sample regime. The small number of validation positives nonetheless limits calibration reliability; this is disclosed in Study Limitations.}
+
+                                                                                                          \subsection*{\hl{Hardware Specifications and Reproducibility}}
+                                                                                                          \hl{All experiments were conducted on a workstation with the following configuration: AMD Ryzen 9 5950X 16-core CPU, NVIDIA GeForce RTX 3090 (24 GB VRAM), 64 GB DDR4 RAM, and 1 TB NVMe SSD. Software dependencies: Python 3.10, PyTorch 2.0.1, scikit-learn 1.3.0, nilearn 0.10.1, and MNE-Python 1.4.0. Approximate training times per module: Module~1 (3D-CNN): 4.2 hours; Module~2 (Questionnaire encoder): 18 minutes; Module~3 (Phenotypic encoder): 12 minutes; Fusion grid search: 8 minutes. Total pipeline runtime including preprocessing: approximately 6 hours. All analysis code is publicly available at [INSERT GITHUB URL]. Seeds were fixed at 42 for all random number generators (Python, NumPy, PyTorch) to ensure reproducibility.}
+
+                                                                                                          \subsection*{Data Alignment Across Modalities}
+                                                                                                                          Before fusion, predictions are aligned by participant ID across modalities. IDs are standardized to a consistent format, and the common participant set is computed:
+                                                                                                                          \begin{equation}
+                                                                                                                          \mathcal{P}_{\text{common}}=\mathcal{P}_{\text{M1}}\cap \mathcal{P}_{\text{M2}}\cap \mathcal{P}_{\text{M3}}
+                                                                                                                          \end{equation}
+                                                                                                                          Predictions are filtered to $\mathcal{P}_{\text{common}}$ and ordering is verified index-wise to ensure all three probability vectors correspond to the same individuals~\cite{ref57}.
+
+
+                                                                                                                          \begin{table*}[!t]
+\begin{adjustwidth}{-2.25in}{0in}
+\centering
+\caption{\hl{\textbf{Hyperparameters and training configurations for all three framework modules.}}}
+\label{tab:hyperparams}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+\textbf{Hyperparameter} & \textbf{Module 1 (MRI, 3D-CNN)} & \textbf{Module 2 (Questionnaire)} & \textbf{Module 3 (Phenotypic)} \\
+\hline
+Input dimensionality & $91 \times 109 \times 91$ voxels & 40 features & 76 features \\
+\hline
+Architecture & 3D-CNN + Random Forest & Residual encoder + MHA & Residual encoder + MHA \\
+\hline
+Hidden layer size & 256 (FC after CNN) & 64 & 128 \\
+\hline
+Embedding dimension & 128 & 32 & 64 \\
+\hline
+Attention heads & --- & 4 (head\_dim~=~8) & 4 (head\_dim~=~16) \\
+\hline
+Attention scaling factor & --- & $\sqrt{64}$ & $\sqrt{128}$ \\
+\hline
+Loss function & Focal Loss ($\gamma = 2$) & Focal + Prototype Loss & Focal + Prototype Loss \\
+\hline
+Class imbalance handling & SMOTE + class weights & Class weights (1:7) & Class weights (1:7) \\
+\hline
+Optimizer & Adam & Adam & Adam \\
+\hline
+Learning rate & $1 \times 10^{-4}$ & $5 \times 10^{-4}$ & $5 \times 10^{-4}$ \\
+\hline
+Batch size & 8 & 32 & 32 \\
+\hline
+Max epochs & 100 (early stop) & 200 & 200 \\
+\hline
+Early stopping patience & 15 epochs & 20 epochs & 20 epochs \\
+\hline
+Dropout rate & 0.5 & 0.3 & 0.3 \\
+\hline
+Calibration method & Isotonic regression & Isotonic regression & Isotonic regression \\
+\hline
+Random seed & 42 & 42 & 42 \\
+\hline
+\end{tabular}
+\begin{flushleft}
+\hl{MHA = Multi-Head Attention. Focal Loss $\gamma = 2$ upweights hard examples under class imbalance. SMOTE was applied only to training-set embeddings of Module~1.}
+\end{flushleft}
+\end{adjustwidth}
+\end{table*}
+
+\section*{Results}
+                                                                                                                          The following section presents a comprehensive evaluation of the proposed twin-aware multi modal framework for early prediction of adolescent anxiety. The results are shown for a single mode, then for multimodal fusion, then for statistical confirmation, and finally for a comparison with other research that has already been done. It emphasizes clinical relevance, resilience among class imbalances, and a rigorous approach facilitated by leakage-free twin-aware evaluation. 
+
+                                                                                                                          \subsection*{Performance Evaluation}
+                                                                                                                          This section evaluates the proposed multimodal framework for early prediction of anxiety in adolescents. The assessment encompasses structural MRI, behavioral questionnaires, and demographic/genetic variables, evaluated both individually and in combination. Model performance is quantified using clinical metrics including AUC-ROC, F1-score, sensitivity, and specificity. The evaluation emphasizes reliability, interpretability, and twin-aware data splitting to ensure realistic generalization. Performance is benchmarked against prior work to contextualize the proposed approach.
+
+                                                                                                                          \subsubsection*{Single-Modality Performance}
+                                                                                                                          Table~\ref{tab:performance_summary} summarizes the performance of each modality on the held-out test set, quantified by ROC-AUC, F1-score, precision, and recall. Each modality was evaluated independently to assess its utility as a standalone predictor of incident anxiety in adolescents.
+
+                                                                                                                          \textbf{Module 1 (MRI):} The MRI-based model achieved an AUC of 0.7455, an F1-score of 0.4348, a precision of 0.3125, and a recall of 0.7143. This moderate performance demonstrates that structural neuroanatomical features provide meaningful predictive information for future anxiety outcomes. The relatively modest discriminative power reflects the distributed and subtle nature of brain structural alterations associated with anxiety vulnerability in adolescents.
+
+                                                                                                                          \textbf{Module 2 (Questionnaire):} The questionnaire-based model demonstrated the strongest individual performance with an AUC of 0.7766 and perfect recall (1.0000), successfully identifying all anxiety-positive cases without false negatives. However, this exceptional sensitivity came at the cost of lower precision (0.2258), resulting in an F1-score of 0.3684. The high recall is particularly valuable for early screening applications, where minimizing missed cases is the primary clinical priority.
+
+                                                                                                                          \textbf{Module 3 (Phenotypic):} The phenotypic model achieved an AUC of 0.6961, with an F1-score of 0.4167, a precision of 0.2941, and a recall of 0.7143. Despite relatively weak individual feature correlations (maximum absolute correlation = 0.187), the model captured multivariate relationships among socioeconomic, developmental, psychosocial, and twin zygosity variables, indicating that phenotypic context contributes useful complementary information for anxiety risk prediction.
+
+                                                                                                                          \begin{table*}[!t]
+                                                                                                                          \begin{adjustwidth}{-2.25in}{0in}
+                                                                                                                          \centering
+                                                                                                                          \caption{\textbf{Performance Metrics Summary on the Test Set}}
+                                                                                                                          \label{tab:performance_summary}
+                                                                                                                          \footnotesize
+                                                                                                                          \renewcommand{\arraystretch}{1.15}
+
+                                                                                                                          \begin{tabular}{|p{3.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|}
+                                                                                                                          \hline
+                                                                                                                          \textbf{Method} & \textbf{ROC-AUC} & \textbf{F1} & \textbf{Precision} & \textbf{Recall} & \textbf{Threshold} \\
+                                                                                                                          \hline
+
+                                                                                                                          M1 (MRI)
+                                                                                                                          & 0.7455
+                                                                                                                          & 0.4348
+                                                                                                                          & 0.3125
+                                                                                                                          & 0.7143
+                                                                                                                          & 0.216 \\
+                                                                                                                          \hline
+
+                                                                                                                          M2 (Questionnaire)
+                                                                                                                          & 0.7766
+                                                                                                                          & 0.3684
+                                                                                                                          & 0.2258
+                                                                                                                          & 1.0000
+                                                                                                                          & 0.504 \\
+                                                                                                                          \hline
+
+                                                                                                                          M3 (Phenotypic)
+                                                                                                                          & 0.6961
+                                                                                                                          & 0.4167
+                                                                                                                          & 0.2941
+                                                                                                                          & 0.7143
+                                                                                                                          & 0.885 \\
+                                                                                                                          \hline
+
+                                                                                                                          Fusion
+                                                                                                                          & \textbf{0.8935}
+                                                                                                                          & \textbf{0.6000}
+                                                                                                                          & \textbf{0.4615}
+                                                                                                                          & \textbf{0.8571}
+                                                                                                                          & \textbf{0.500} \\
+                                                                                                                          \hline
+
+                                                                                                                          \end{tabular}
+
+                                                                                                                          \begin{flushleft}
+                                                                                                                          Table notes: Summary of classification performance for each unimodal module
+                                                                                                                          (MRI, questionnaire, and phenotypic features) and the multimodal fusion
+                                                                                                                          model on the held-out test set.
+                                                                                                                          \end{flushleft}
+
+                                                                                                                          \end{adjustwidth}
+                                                                                                                          \end{table*}
+
+                                                                                                                          \subsubsection*{Multimodal Fusion Results}
+                                                        Multimodal fusion approaches were evaluated to integrate behavioral questionnaires, MRI-based neuroimaging features, and demographic and genetic factors. Previous studies have shown that hybrid fusion strategies can effectively combine complementary feature representations for medical diagnosis~\cite{ref65}.                      
+                                                                                                                          Table~\ref{tab:fusion_results} summarizes the performance
+                                                                                                                          of several fusion strategies, including feature concatenation,
+                                                                                                                          cross-modal attention (baseline), and optimized late fusion.
+
+                                                                                                                          Among the evaluated approaches, the optimized weighted late fusion
+                                                                                                                          strategy produced the most consistent performance on the held-out
+                                                                                                                          test set. This model achieved an AUC of 0.894, an F1-score of 0.60,
+                                                                                                                          a precision of 0.4615, and a recall of 0.8571 (Table~\ref{tab:fusion_results}).
+                                                                                                                          Although the test set is relatively small, these results suggest that
+                                                                                                                          combining calibrated unimodal predictions through weighted late fusion
+                                                                                                                          can provide a stable integration strategy when multimodal datasets are
+                                                                                                                          limited.
+
+                                                                                                                          The optimized fusion model combines modality-specific probabilities
+                                                                                                                          through a weighted linear aggregation:
+
+                                                                                                                          \begin{equation}
+                                                                                                                          P_{\text{multimodal}} = w_1 P_{\text{MRI}} + w_2 P_{\text{Questionnaire}} + w_3 P_{\text{Static}},
+                                                                                                                          \end{equation}
+
+                                                                                                                          For each candidate weight configuration, fused multimodal predictions are computed using \hl{Eq~(38)}, following the same approach as \hl{Eq~(37)}~\cite{ref59}. 
+
+                                                                                                                          % Figure 5 caption - figure file to be uploaded separately (Fig5_Confusion_Matrix.png)
+                                                                                                                          \begin{figure}[!h]
+                                                                                                                          \caption{\textbf{Confusion matrix illustrating the classification performance of the multimodal fusion model on the held-out test set.}
+                                                                                                                          The matrix highlights true positives, true negatives, false positives, and false negatives, providing insight into model prediction errors.}
+                                                                                                                          \label{fig:confusion_matrix}
+                                                                                                                          \end{figure}
+
+                                                                                                                          While the confusion matrix illustrates prediction outcomes for the optimized model, Table~\ref{tab:fusion_results} provides a quantitative comparison of multiple multimodal fusion strategies.
+
+                                                                                                                          \begin{table*}[!t]
+                                                                                                                          \begin{adjustwidth}{-2.25in}{0in}
+                                                                                                                          \centering
+                                                                                                                          \caption{\textbf{Performance Comparison of Multimodal Fusion Methods}}
+                                                                                                                          \label{tab:fusion_results}
+                                                                                                                          \footnotesize
+                                                                                                                          \renewcommand{\arraystretch}{1.15}
+
+                                                                                                                          \begin{tabular}{|p{3.0cm}|p{3.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|}
+                                                                                                                          \hline
+                                                                                                                          \textbf{Modalities Used} & \textbf{Fusion Method} & \textbf{ROC-AUC} & \textbf{F1} & \textbf{Recall} & \textbf{Precision} \\
+                                                                                                                          \hline
+
+                                                                                                                          MRI + Questionnaire + Demographics
+                                                                                                                          & Optimized Late Fusion
+                                                                                                                          & 0.894 (95\% CI: 0.792--0.969)
+                                                                                                                          & 0.60
+                                                                                                                          & 0.8571
+                                                                                                                          & 0.4615 \\
+                                                                                                                          \hline
+
+                                                                                                                          MRI + Questionnaire + Demographics
+                                                                                                                          & Product Rule
+                                                                                                                          & 0.8623
+                                                                                                                          & 0.4516
+                                                                                                                          & 1.0000
+                                                                                                                          & 0.2917 \\
+                                                                                                                          \hline
+
+                                                                                                                          MRI + Questionnaire + Demographics
+                                                                                                                          & Simple Average
+                                                                                                                          & 0.7818
+                                                                                                                          & 0.4444
+                                                                                                                          & 0.8571
+                                                                                                                          & 0.3000 \\
+                                                                                                                          \hline
+
+                                                                                                                          MRI + Questionnaire + Demographics
+                                                                                                                          & Cross-Modal Attention (baseline)
+                                                                                                                          & 0.7195
+                                                                                                                          & 0.3750
+                                                                                                                          & 0.8571
+                                                                                                                          & 0.2400 \\
+                                                                                                                          \hline
+
+                                                                                                                          \end{tabular}
+
+                                                                                                                          \begin{flushleft}
+                                                                                                                          Table notes: Comparison of multimodal fusion strategies combining
+                                                                                                                          structural MRI, behavioral questionnaires, and demographic/phenotypic
+                                                                                                                          information. The optimized late fusion approach achieved the strongest
+                                                                                                                          overall performance on the held-out test set.
+                                                                                                                          \end{flushleft}
+
+                                                                                                                          \end{adjustwidth}
+                                                                                                                          \end{table*}
+
+                                                                                                                          The fusion weights $w_1$, $w_2$, and $w_3$ were optimized using grid search on the validation set. Optimized late fusion demonstrated the highest overall performance (AUC = 0.894), representing an absolute increase of 11.74 percentage points compared to the best unimodal baseline (Module~2, AUC = 0.7766), as detailed in Table~\ref{tab:fusion_results}. Module~2 achieved perfect recall but had low precision (0.2258). In contrast, the optimized fusion method improved precision by 2.04 times (0.4615) while maintaining high recall (0.8571), making it more appropriate for clinical screening. The product rule fusion maintained perfect recall but had lower precision, while simple averaging was less effective because it treated complementary modalities equally. Cross-modal attention demonstrated the lowest performance (AUC = 0.7195), suggesting that the sample size ($N = 242$) is inadequate for effectively learning complex inter-modal dependencies. Figure ~\ref{fig:confusion_matrix} shows the confusion matrix for the optimized fusion model, highlighting its success in identifying at-risk adolescents while significantly lowering false positives compared to unimodal methods.
+
+                                                                                                                          \subsection*{Final Design Adjustments}
+
+                                                                                                                          Based on empirical evaluation, the final architecture employs optimized late fusion with modality weighting that prioritizes behavioral information while retaining complementary contributions from MRI and demographic features. The optimal weight distribution allocates 63\% to behavioral questionnaires, 23\% to MRI features, and 14\% to demographic/phenotypic variables. This allocation balances predictive performance, clinical interpretability, and model stability. Prototype-based learning further enhances clinical interpretability by modeling latent vulnerability profiles rather than opaque high-dimensional feature embeddings.
+
+                                                                                                                          \subsection*{Ablation Studies}
+
+                                                                                                                          % Figure 6 caption - figure file to be uploaded separately (Fig6_Ablation_Study.png)
+                                                                                                                          \begin{figure}[!h]
+                                                                                                                          \caption{\textbf{Ablation study evaluating the contribution of each modality.}
+                                                                                                                          The figure shows ablation analysis evaluating the contribution of each modality (MRI, questionnaire, and demographic features) and their combinations to the overall model performance.}
+                                                                                                                          \label{fig:ablation_analysis}
+                                                                                                                          \end{figure}
+
+                                                                                                                          Fig~\ref{fig:ablation_analysis} presents the results of a comprehensive ablation analysis evaluating the contribution of each modality. All single-modality and pairwise combinations were systematically evaluated to quantify the incremental value provided by each modality. The complete three-way fusion model achieved an AUC of 0.894 (95\% CI: 0.792--0.969), representing an \hl{11.7~pp (absolute) improvement over the best unimodal baseline}. This substantial gain demonstrates that each modality provides distinct and complementary predictive information. Analysis of the optimized fusion weights revealed that questionnaire responses (weight = 0.63) provide the strongest predictive signal, while MRI features (weight = 0.23) and demographic/phenotypic features (weight = 0.14) contribute complementary information that enhances discrimination. These findings underscore the importance of multimodal integration for improving anxiety prediction accuracy.
+
+                                                                                                          \hl{The disproportionate performance gain observed when combining all three modalities relative to the modest gains seen in pairwise combinations (Fig~\ref{fig:ablation_analysis}) is explained by \textbf{error complementarity} across the three modules. The MRI module and the questionnaire module systematically misclassify different subsets of anxiety-positive individuals: the MRI module tends to miss cases with atypical structural brain profiles but prominent behavioral symptomatology, while the questionnaire module tends to miss cases with strong neuroimaging signal but near-threshold questionnaire scores. The phenotypic module, drawing on demographic and family-level features, provides additional signal that partially corrects the residual errors of both other modules. This three-way error decorrelation produces a fusion gain that exceeds the sum of pairwise increments --- a well-established phenomenon in ensemble learning \cite{ref63} that is particularly pronounced when constituent classifiers have high individual accuracy but low pairwise agreement on difficult cases. The observed pattern is therefore not an artifact of overfitting but rather a structurally expected consequence of combining modalities with genuinely complementary error structures.} 
+
+                                                                                                                          \subsection*{Statistical Analysis}
+
+                                                                                                                          Model uncertainty was quantified using 2,000 rounds of stratified percentile bootstrapping while preserving the original class distribution of 11.3\% positive cases. Bootstrap confidence intervals for AUC-ROC and F1-score across unimodal models and the multimodal fusion model are presented in Figure~\ref{fig:ci_barplot}. The multimodal fusion model achieved an AUC-ROC of 0.894 (95\% CI: 0.792--0.969) and an F1-score of 0.600 (95\% CI: 0.417--0.824) on the held-out test set ($n = 62$, including 7 positive cases). Individual modality confidence intervals were also estimated for MRI, questionnaire, and demographic models. The wide confidence intervals observed across all models are consistent with the limited number of positive test samples and reflect substantial uncertainty in per-class performance estimates at this sample size.
+
+                                                                                                                          Bootstrap resampling for confidence interval estimation is performed as follows. At each of 2,000 bootstrap iterations, 62 samples are drawn with replacement from the test set, stratified by class to maintain the original class distribution (11.3\% positive cases). For each bootstrap resample, the optimal decision threshold is determined via Youden's J statistic computed on that resample, and performance metrics (AUC-ROC, accuracy, sensitivity, specificity, F1-score) are computed. The 95\% confidence intervals are defined by the 2.5th and 97.5th percentiles of the bootstrap distribution. Family relationships among twins are not explicitly preserved during bootstrap resampling due to the limited test set size (31 families with 62 individuals), which may slightly underestimate confidence interval width if outcomes within families are correlated. However, the stratified resampling ensures class balance is maintained across all iterations, providing reliable uncertainty quantification for the observed performance metrics.
+
+                                                                                                                          % Figure 7 caption - figure file to be uploaded separately (Fig7_Bootstrap_CI.png)
+                                                                                                                          \begin{figure}[!h]
+                                                                                                                          \caption{\textbf{AUC-ROC and F1-score with 95\% bootstrap confidence intervals.}
+                                                                                                                          AUC-ROC and F1-score with 95\% bootstrap confidence intervals for each unimodal model (MRI, questionnaire, and demographic) and the multimodal fusion model. The left panel shows AUC-ROC values and the right panel shows F1-scores. Error bars represent 95\% confidence intervals obtained from 2,000 stratified bootstrap resamples.}
+                                                                                                                          \label{fig:ci_barplot}
+                                                                                                                          \end{figure}
+
+                                                                                                                          To evaluate whether the multimodal model significantly outperformed
+                                                                                                                          individual modalities, pairwise comparisons were conducted using
+                                                                                                                          DeLong's test for AUC differences and McNemar's test for differences
+                                                                                                                          in binary classification patterns.DeLong's test did not reach statistical significance for any comparison (Fusion vs MRI: $z = 1.601$, $p = 0.1094$; Fusion vs Questionnaire:
+                                                                                                                          $z = 1.729$, $p = 0.0838$; Fusion vs Demographics: $z = 1.812$,
+                                                                                                                          $p = 0.0700$). These non-significant results are consistent with the
+                                                                                                                          limited statistical power of the small test set and should therefore
+                                                                                                                          not be interpreted as evidence of no performance difference.
+
+                                                                                                                          \begin{table*}[!t]
+                                                                                                                          \begin{adjustwidth}{-2.25in}{0in}
+                                                                                                                          \centering
+                                                                                                                          \caption{\textbf{Statistical Significance Tests Comparing Multimodal Fusion Model with Unimodal Baselines}}
+                                                                                                                          \label{tab:stat_tests}
+                                                                                                                          \footnotesize
+                                                                                                                          \renewcommand{\arraystretch}{1.3}
+                                                                                                                          
+                                                                                                                          \begin{tabular}{|l|c|c|c|c|c|}
+                                                                                                                          \hline
+                                                                                                                          \textbf{Comparison} & \textbf{$\Delta$AUC} & \textbf{DeLong $z$} & \textbf{DeLong $p$} & \textbf{McNemar $\chi^2$} & \textbf{McNemar $p$} \\
+                                                                                                                          \hline
+                                                                                                                          Fusion vs MRI & +0.1481 & +1.6010 & 0.1094 ns & 1.4550 & 0.2278 ns \\
+                                                                                                                          \hline
+                                                                                                                          Fusion vs M2-Text & +0.1169 & +1.7290 & 0.0838 ns & 11.2500 & 0.0008 *** \\
+                                                                                                                          \hline
+                                                                                                                          Fusion vs M3-Demo & +0.1974 & +1.8120 & 0.0700 ns & 2.0830 & 0.1489 ns \\
+                                                                                                                          \hline
+                                                                                                                          \end{tabular}
+                                                                                                                          
+                                                                                                                          \begin{flushleft}
+                                                                                                                          Table notes: Summary of statistical comparisons between the multimodal fusion model and unimodal baselines using DeLong test (for AUC comparison) and McNemar test (for classification pattern comparison). Only the comparison between the fusion model and the questionnaire-only baseline (M2-Text) reached statistical significance according to McNemar's test ($p = 0.0008$). $\Delta$AUC = difference in AUC-ROC between fusion model and unimodal baseline. M2-Text = Questionnaire-only module; M3-Demo = Phenotypic-only module. Significance levels: *** $p<0.001$, ** $p<0.01$, * $p<0.05$, ns = not significant.
+                                                                                                                          \end{flushleft}
+                                                                                                                          \end{adjustwidth}
+                                                                                                                          \end{table*}
+
+                                                                                                                          McNemar's test revealed a statistically significant difference in
+                                                                                                                          classification patterns between the fusion model and the
+                                                                                                                          questionnaire-only baseline ($\chi^2 = 11.250$, $p = 0.0008$),
+                                                                                                                          indicating that multimodal integration changes which subjects are
+                                                                                                                          correctly identified beyond what questionnaire responses alone can
+                                                                                                                          achieve. No significant difference in classification patterns was
+                                                                                                                          observed between the fusion model and MRI-only ($\chi^2 = 1.455$,
+                                                                                                                          $p = 0.2278$) or demographics-only ($\chi^2 = 2.083$, $p = 0.1489$)
+                                                                                                                          baselines. These findings suggest that questionnaire, MRI, and
+                                                                                                                          demographic modalities contribute complementary predictive information,
+                                                                                                                          even though formal statistical significance for AUC improvement was
+                                                                                                                          not achieved at the current sample size.
+
+                                                                                                                          \subsection*{Performance Comparison with Prior Work and Relationships}
+
+                                                                                                                          The multimodal fusion model substantially outperformed all unimodal baselines, achieving a \hl{14.8~pp (absolute) improvement in ROC-AUC over MRI alone}, a \hl{11.7~pp (absolute) improvement over questionnaires alone}, and a \hl{19.7~pp (absolute) improvement over demographic features alone}. Table~\ref{tab:prior_comparison} contextualizes the performance of the proposed framework relative to prior adolescent mental health prediction studies.
+
+                                                                                                                          \begin{table*}[!t]
+                                                                                                                          \begin{adjustwidth}{-1.5in}{0in}
+                                                                                                                          \centering
+                                                                                                                          \caption{\textbf{Comparison with Prior Adolescent Mental Health Prediction Studies}}
+                                                                                                                          \label{tab:prior_comparison}
+                                                                                                                          \footnotesize
+                                                                                                                          \renewcommand{\arraystretch}{1.15}
+
+                                                                                                                          \begin{tabular}{|p{4.5cm}|p{5.2cm}|p{5.2cm}|}
+                                                                                                                          \hline
+                                                                                                                          \textbf{Key Aspect} & \textbf{Prior Studies} & \textbf{Proposed Framework} \\
+                                                                                                                          \hline
+
+                                                                                                                                                                                                                                    \hl{\textbf{Study Type}} & \hl{Diagnostic / symptom detection} & \hl{Early predictive screening} \\
+                                                                                                          \hline
+
+                                                                                                          Prediction Task & Symptom detection & Incident anxiety prediction \\
+                                                                                                                          \hline
+
+                                                                                                                          Study Design & Mostly cross-sectional & Longitudinal \\
+                                                                                                                          \hline
+
+                                                                                                                          Neuroimaging & Limited or shallow & CNN-based structural MRI \\
+                                                                                                                          \hline
+
+                                                                                                                          Prototype Learning & Rare & Core component \\
+                                                                                                                          \hline
+
+                                                                                                                          Genetic Control & Ignored & Twin-aware split enforced \\
+                                                                                                                          \hline
+
+                                                                                                                          Evaluation Bias & Potential leakage & Leakage-free \\
+                                                                                                                          \hline
+
+                                                                                                                          Clinical Recall & Moderate & High (up to 0.857) \\
+                                                                                                                          \hline
+
+                                                                                                                          \end{tabular}
+
+                                                                                                                          \begin{flushleft}
+                                                                                                                          Table notes: Comparison between prior adolescent mental health prediction studies
+                                                                                                                          and the proposed twin-aware multimodal framework. The proposed method integrates
+                                                                                                                          behavioral questionnaires, structural MRI, and phenotypic information while
+                                                                                                                          enforcing twin-aware data splitting to reduce genetic leakage.
+                                                                                                                          \end{flushleft}
+
+                                                                                                                          \end{adjustwidth}
+                                                                                                                          \end{table*}
+
+                                                                                                                          The proposed approach differs from prior studies by emphasizing longitudinal prediction of incident anxiety, enforcing twin-aware evaluation to prevent genetic leakage, and integrating neurobiological, behavioral, and demographic modalities to enhance clinical validity. Table~\ref{tab:performance_comparison} presents a comparative performance analysis highlighting early prediction in adolescent populations.
+
+                                                                                                                          \begin{table*}[!t]
+                                                                                                                          \begin{adjustwidth}{-2.25in}{0in}
+                                                                                                                          \centering
+                                                                                                                          \caption{\textbf{Comparative Performance Highlighting Early Prediction in Adolescents}}
+                                                                                                                          \label{tab:performance_comparison}
+                                                                                                                          \footnotesize
+                                                                                                                          \renewcommand{\arraystretch}{1.15}
+
+                                                                                                                          \begin{tabular}{|p{3.0cm}|p{2.4cm}|p{3.6cm}|p{2.0cm}|p{2.0cm}|p{2.4cm}|}
+                                                                                                                          \hline
+                                                                                                                          \textbf{Study} & \textbf{Modalities} & \textbf{Datasets Used} & \textbf{Population} & \textbf{Task} & \textbf{AUROC} \\
+                                                                                                                          \hline
+
+                                                                                                                          Text-based ML~\cite{ref11,ref17}
+                                                                                                                          & Text
+                                                                                                                          & CLPsych, Reddit, Twitter, interviews
+                                                                                                                          & Mixed
+                                                                                                                          & Detection
+                                                                                                                          & 0.88--0.92 \\
+                                                                                                                          \hline
+
+                                                                                                                          Speech-based DL~\cite{ref14,ref27}
+                                                                                                                          & Audio
+                                                                                                                          & AVEC, DAIC-WOZ, voice/speech datasets
+                                                                                                                          & Adults
+                                                                                                                          & Detection
+                                                                                                                          & 0.81--0.91 \\
+                                                                                                                          \hline
+
+                                                                                                                          MRI (ABCD)~\cite{ref46}
+                                                                                                                          & MRI
+                                                                                                                          & ABCD MRI cohort; MRI + fMRI + Genomics
+                                                                                                                          & Adolescents
+                                                                                                                          & Prediction
+                                                                                                                          & 0.86 \\
+                                                                                                                          \hline
+
+                                                                                                                          Multimodal DL~\cite{ref5,ref7,ref8,ref10}
+                                                                                                                          & Audio + Visual
+                                                                                                                          & DAIC-WOZ, CMU-MOSEI, AVEC, local clinical datasets
+                                                                                                                          & Adults
+                                                                                                                          & Detection
+                                                                                                                          & 0.88--0.93 \\
+                                                                                                                          \hline
+
+                                                                                                                          This work
+                                                                                                                          & M1 + M2 + M3
+                                                                                                                          & Queensland Twin Adolescent Brain (QTAB) Dataset~\cite{ref31}
+                                                                                                                          & Adolescents
+                                                                                                                          & Early prediction
+                                                                                                                          & 0.894 (95\% CI: 0.792--0.969) \\
+                                                                                                                          \hline
+
+                                                                                                                          \end{tabular}
+
+                                                                                                                          \begin{flushleft}
+                                                                                                                          Table notes: Comparison of representative machine learning and deep learning
+                                                                                                                          approaches for mental health prediction across different modalities.
+                                                                                                                          Unlike prior work primarily focused on symptom detection in adult cohorts,
+                                                                                                                          the proposed twin-aware multimodal framework targets early prediction of
+                                                                                                                          incident anxiety in adolescents using structural MRI, behavioral
+                                                                                                                          questionnaires, and phenotypic traits.
+                                                                                                                          \end{flushleft}
+
+                                                                                                                          \end{adjustwidth}
+                                                                                                                          \end{table*}
+
+                                                                                                                          Relative to prior literature, the proposed framework achieves competitive or superior performance while addressing limitations common in earlier studies, including cross-sectional design, adult-focused cohorts, absence of genetic controls, and lack of leakage-aware evaluation. This research focuses on predicting incident anxiety, which presents a greater challenge and holds more clinical significance compared to solely detecting symptoms.
+
+                                                                                                                          \subsection*{\hl{Construct Overlap and Label Validity}}
+                                                                                                          \hl{An important interpretive caveat concerns the nature of the questionnaire module's predictive signal. The top-ranked questionnaire predictors at baseline (pSCAS32, pSCAS18, pSCAS30, SCAS15) are items from the Spence Children's Anxiety Scale (SCAS), and the outcome label is defined as child SCAS $\geq$ 30 at follow-up. The strong performance of the questionnaire module therefore substantially reflects the expected autocorrelation between baseline subclinical anxiety symptom severity and later crossing of a clinical threshold, rather than the discovery of novel early biomarkers. This is a legitimate and clinically useful predictive relationship --- identifying children already showing elevated anxiety symptoms is a meaningful screening goal --- but readers should not interpret the questionnaire AUC of 0.777 as evidence of a novel early-warning signal independent of symptom history.}
+
+                                                                                                          \hl{Regarding the SCAS cutoff of $\geq$30: this threshold was applied uniformly across the full age range of 9--18 years and across both sexes. While this provides a simple, transparent label definition, anxiety symptom norms vary by age and sex across this developmental window, and a fixed threshold may be more sensitive in some subgroups than others. A lower cutoff (SCAS $\geq$ 28) would increase the positive case count but risk including transient subclinical fluctuations; a higher cutoff (SCAS $\geq$ 32) would reduce label noise near the threshold but further shrink an already small positive class. A formal sensitivity analysis varying the cutoff in steps of $\pm$2 points would require re-processing all three modality pipelines from raw QTAB scores; this was not completed in the present revision and is disclosed as a priority for future work with larger cohorts.}
+
+                                                                                                          \hl{Finally, adolescents with scores near the boundary (SCAS 28--32) may represent genuine measurement noise or regression-to-the-mean rather than true clinical transition. In a cohort with 38 positive cases, even two or three boundary-case misclassifications could meaningfully shift performance metrics. Sensitivity analyses around the threshold boundary are therefore recommended before drawing conclusions about the specific predictors that drive model performance in near-threshold cases.}
+
+                                                                                                          \hl{Reporting AUC and F1-score alone provides an incomplete picture of screening utility. At the QTAB prevalence of 11.3\% incident anxiety (38/304), and using the confusion matrix from the held-out test set (TP~=~6, FP~=~7, TN~=~48, FN~=~1), the following clinical utility metrics can be derived:}
+                                                                                                          \begin{itemize}
+                                                                                                              \item \hl{\textbf{Positive Predictive Value (PPV):} $6 / (6 + 7) = 6/13 = 46.2\%$}
+                                                                                                              \item \hl{\textbf{Negative Predictive Value (NPV):} $48 / (48 + 1) = 48/49 = 98.0\%$}
+                                                                                                              \item \hl{\textbf{Number Needed to Screen (NNS):} $1 / (\text{sensitivity} \times \text{prevalence}) = 1 / (0.857 \times 0.113) \approx 10$}
+                                                                                                          \end{itemize}
+                                                                                                          \hl{These figures indicate that the framework has high rule-out utility: a negative screen has a 98.0\% chance of correctly identifying a non-case. However, positive screens carry a false-positive rate of 53.8\%, meaning that for every two adolescents flagged by the model, only approximately one would be a true incident anxiety case. In a low-cost, high-volume screening context, this may be acceptable as a first-pass triage tool followed by clinical assessment; in a higher-stakes context (e.g., direct referral for pharmacological treatment), the positive screen precision would need to be substantially improved before deployment. These considerations reinforce our framing of the framework as a proof-of-concept requiring further validation rather than a deployment-ready clinical tool.}
+
+\subsection*{Clinical Utility Framing}
+
+\hl{Reporting AUC and F1-score alone provides an incomplete picture of screening utility. At the QTAB prevalence of 11.3\% incident anxiety (38/304), and using the confusion matrix from the held-out test set (TP = 6, FP = 7, TN = 48, FN = 1), the following clinical utility metrics can be derived:}
+
+\begin{itemize}
+    \item \hl{Positive Predictive Value (PPV): $6/(6+7)=6/13=46.2\%$ }
+    \item \hl{Negative Predictive Value (NPV): $48/(48+1)=48/49=98.0\%$ }
+    \item \hl{Number Needed to Screen (NNS):
+                 $1/(\mathrm{sensitivity}\times\mathrm{prevalence}) = 1/(0.857\times0.113)\approx10.4$ (approximately 10 adolescents) }
+\end{itemize}
+
+\hl{These figures indicate that the framework has high rule-out utility, with a negative screen having a 98.0\% probability of correctly identifying a non-case. However, the PPV of 46.2\% indicates that 53.8\% of positive predictions are false positives, meaning that approximately one out of every two adolescents identified as high risk would not subsequently develop incident anxiety. The estimated NNS of approximately 10 suggests that about ten adolescents would need to be screened to identify one future anxiety case. In a low-cost, high-volume screening setting, this may be acceptable as a first-pass triage tool followed by clinical assessment. However, for higher-stakes clinical decisions, the positive predictive value would need to be improved before deployment. These findings support the framework as an exploratory screening approach that requires validation in larger independent cohorts before clinical use.}
+
+\subsection*{SHAP-Based Feature Attribution}
+
+\hl{To improve model interpretability and provide clinically actionable insight into individual feature contributions, we performed SHAP (SHapley Additive exPlanations) analysis~\cite{ref_shap} on Modules 2 and 3. SHAP values quantify each feature's marginal contribution to a model's output for a given sample, supporting both global importance ranking and instance-level explanation. As the prototypical network architectures do not natively support SHAP computation, we trained Random Forest surrogate models on the training data to approximate the learned decision boundaries and applied TreeExplainer to compute SHAP values for all test-set samples ($n=62$), using 100 background samples drawn from the training set (random seed fixed at 42 throughout).}
+
+\hl{\textbf{Module 2 (Questionnaire).} Among the 88 questionnaire features analysed, SCAS19 (child-reported generalised anxiety), pSDQ13 (parent-reported emotional difficulties), SCAS02 (separation anxiety), and SCAS28 (obsessive--compulsive symptoms) emerged as the most influential predictors (mean $|\mathrm{SHAP}|$ = 0.034, 0.027, 0.023, and 0.018, respectively; Table~\ref{tab:module2_shap}). Parent-reported measures (pSCAS and pSDQ) were consistently ranked among the top contributors alongside child self-report items, a pattern consistent with the 63\% fusion weight assigned to Module 2 in the multimodal framework.}
+
+% Figure 9 caption - figure file to be uploaded separately (Fig9_Module2_SHAP_Summary.png)
+\begin{figure}[!h]
+\caption{\textbf{SHAP feature importance for Module 2 (Questionnaire).} Summary plot of SHAP values across all test samples ($n=62$) for the top 20 questionnaire features. Each point represents one sample; colour indicates feature value (red = high, blue = low). Features are ordered by mean absolute SHAP value.}
+\label{fig:module2_shap_summary}
+\end{figure}
+
+\hl{Figure~\ref{fig:module2_shap_summary} presents the SHAP summary plot for Module 2, displaying the distribution and directionality of feature effects across all test samples.}
+
+% Figure 10 caption - figure file to be uploaded separately (Fig10_Module2_Feature_Importance.png)
+\begin{figure}[!h]
+\caption{\textbf{Ranked feature importance for Module 2 (Questionnaire).} Bar chart of the top 20 questionnaire features by mean absolute SHAP value, corresponding to Fig.~\ref{fig:module2_shap_summary}.}
+\label{fig:module2_bar}
+\end{figure}
+
+\hl{Figure~\ref{fig:module2_bar} presents the ranked bar chart of Module 2 feature importance, summarising the same results as Fig.~\ref{fig:module2_shap_summary} in a simplified format. Table~\ref{tab:module2_shap} lists the top 10 questionnaire features ranked by mean absolute SHAP value.}
+
+\begin{table*}[!t]
+\begin{adjustwidth}{-2.25in}{0in}
+\centering
+\caption{\textbf{Top 10 Questionnaire Features (Module 2) Ranked by Mean Absolute SHAP Value}}
+\label{tab:module2_shap}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Feature} & \textbf{Mean $|$SHAP$|$} \\
+\hline
+SCAS19 & 0.033938 \\
+\hline
+pSDQ13 & 0.026733 \\
+\hline
+SCAS02 & 0.023385 \\
+\hline
+SCAS28 & 0.018323 \\
+\hline
+pSDQ03 & 0.017810 \\
+\hline
+pSCAS07 & 0.017542 \\
+\hline
+SCAS15 & 0.017385 \\
+\hline
+SCAS05 & 0.015303 \\
+\hline
+SCAS36 & 0.010822 \\
+\hline
+pSCAS09 & 0.010272 \\
+\hline
+\end{tabular}
+
+\begin{flushleft}
+Table notes: Top 10 questionnaire features from Module 2 ranked by mean absolute SHAP value across all test samples ($n=62$). SCAS = Spence Children's Anxiety Scale; pSDQ = parent-report Strengths and Difficulties Questionnaire; pSCAS = parent-report SCAS. Higher SHAP values indicate greater contribution to model predictions.
+\end{flushleft}
+\end{adjustwidth}
+\end{table*}
+
+\hl{\textbf{Module 3 (Phenotypic).} Among the 80 phenotypic features analysed, resting pulse (mean $|\mathrm{SHAP}|$ = 0.034), Flanker task performance (cognitive control; 0.028), processing speed (0.021), biological sex (0.021), and systolic blood pressure (0.018) ranked highest (Table~\ref{tab:module3_shap}). Family functioning (pFAD role score) and socioeconomic indicators (birth IER decile) contributed additional, smaller effects. These results indicate that physiological, neurocognitive, and family/environmental variables capture risk dimensions that are complementary to behavioural symptom reports, consistent with the lower (14\%) fusion weight assigned to this module.}
+
+% Figure 11 caption - figure file to be uploaded separately (Fig11_Module3_SHAP_Summary.png)
+\begin{figure}[!h]
+\caption{\textbf{SHAP feature importance for Module 3 (Phenotypic).} Summary plot of SHAP values across all test samples ($n=62$) for the top 20 phenotypic features. Point colour indicates feature value (red = high, blue = low); features are ordered by mean absolute SHAP value.}
+\label{fig:module3_shap_summary}
+\end{figure}
+
+\hl{Figure~\ref{fig:module3_shap_summary} shows the SHAP summary plot for Module 3, illustrating how phenotypic features influence individual predictions across the test set.}
+
+% Figure 12 caption - figure file to be uploaded separately (Fig12_Module3_Feature_Importance.png)
+\begin{figure}[!h]
+\caption{\textbf{Ranked feature importance for Module 3 (Phenotypic).} Bar chart of the top 20 phenotypic features by mean absolute SHAP value, corresponding to Fig.~\ref{fig:module3_shap_summary}.}
+\label{fig:module3_bar}
+\end{figure}
+
+\hl{Figure~\ref{fig:module3_bar} presents the ranked bar chart of Module 3 feature importance, corresponding to the summary plot in Fig.~\ref{fig:module3_shap_summary}. Table~\ref{tab:module3_shap} lists the top 10 phenotypic features ranked by mean absolute SHAP value.}
+
+\begin{table*}[!t]
+\begin{adjustwidth}{-2.25in}{0in}
+\centering
+\caption{\textbf{Top 10 Phenotypic Features (Module 3) Ranked by Mean Absolute SHAP Value}}
+\label{tab:module3_shap}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Feature} & \textbf{Mean $|$SHAP$|$} \\
+\hline
+pulse\_ses01 & 0.034310 \\
+\hline
+Flanker\_agecorr\_stan\_ses01 & 0.027823 \\
+\hline
+ProcSpeed\_agecorr\_stan\_ses01 & 0.021369 \\
+\hline
+sex\_numeric & 0.020831 \\
+\hline
+systolic\_BP\_ses01 & 0.017747 \\
+\hline
+pFAD\_role\_score\_ses01 & 0.015424 \\
+\hline
+SMS02\_ses01 & 0.014769 \\
+\hline
+kJwithDF\_ses01 & 0.013755 \\
+\hline
+birth\_IER\_decile & 0.012801 \\
+\hline
+pPaSS\_score\_ses01 & 0.012724 \\
+\hline
+\end{tabular}
+
+\begin{flushleft}
+Table notes: Top 10 phenotypic features from Module 3 ranked by mean absolute SHAP value across all test samples ($n=62$). Features include resting pulse, cognitive performance (Flanker task, processing speed), sex, blood pressure, family functioning (pFAD), and socioeconomic indicators. Higher SHAP values indicate greater contribution to model predictions.
+\end{flushleft}
+\end{adjustwidth}
+\end{table*}
+
+\hl{Figures~\ref{fig:module2_shap_summary} and~\ref{fig:module3_shap_summary} illustrate both the magnitude and direction of feature effects across the test set. Higher anxiety symptom scores, elevated resting pulse, and reduced cognitive control performance were associated with increased predicted risk, whereas stronger family functioning was associated with reduced predicted risk. Together, these findings suggest that the multimodal framework's predictive performance is grounded in clinically coherent feature relationships rather than spurious associations within the training data.}
+                                                                                                          \subsection*{Feature Importance and Interpretability}
+
+                                                                                                                          To provide clinical insights into the predictive signals captured by each modality, we examined the relative contribution of individual features within each module.
+
+                                                                                                                          \textbf{Questionnaire Features:} Among the top 40 selected questionnaire features (based on absolute Pearson correlation with anxiety outcome), the highest-ranking predictors (absolute correlation $> 0.18$) included parent-reported anxiety items from the pSCAS (Parent Spence Children's Anxiety Scale), particularly items related to separation anxiety (pSCAS32, r = 0.232), panic/agoraphobia (pSCAS18, r = 0.199; pSCAS30, r = 0.182), and obsessive-compulsive symptoms (pSCAS\_obscom\_score, r = 0.176). Parent-reported measures from the pSDQ (Strengths and Difficulties Questionnaire) emotional subscale also featured prominently (pSDQ03, r = 0.226; pSDQ\_emot\_score, r = 0.206; pSDQ24, r = 0.170; pSDQ13, r = 0.168). Notably, parent-reported measures (pSCAS, pSDQ) generally showed stronger correlations than child self-reports (SCAS15, r = 0.186 was the highest child-report item), consistent with clinical observations that parents may detect early anxiety symptoms and behavioral changes before adolescents explicitly endorse or recognize them in self-report measures. This pattern suggests that incorporating multi-informant assessments (parent and child reports) provides complementary perspectives on emerging anxiety risk.
+
+                                                                                                                          \textbf{Phenotypic Contributors:} Among phenotypic features in Module 3, the strongest predictors included indicators of psychosocial adversity, family socioeconomic status proxies (parental education, household income markers), and measures of peer relationships and social support quality. Environmental risk factors such as family conflict, peer victimization, and school stress showed moderate positive correlations with anxiety outcomes, consistent with developmental psychopathology models emphasizing the role of chronic stressors in anxiety vulnerability. Twin zygosity (monozygotic vs. dizygotic status) showed weak direct correlation with anxiety outcome ($|r| < 0.10$), suggesting that in this longitudinal prediction task, environmental and behavioral factors dominate over genetic similarity markers as direct predictors. However, zygosity may modulate other risk pathways not captured by simple linear correlation, and its inclusion as a feature allows the model to potentially account for gene-environment interactions in a data-driven manner.
+
+                                                                                                                          \textbf{MRI Patterns:} The pretrained 3D CNN encoder captures distributed neuroanatomical patterns across the entire brain volume through hierarchical convolutional feature learning. However, detailed regional attribution analysis (e.g., gradient-weighted saliency mapping, layer-wise relevance propagation, or voxel-wise importance scoring) was not performed due to the black-box nature of the transfer-learned encoder and the small positive-class sample size (n = 31 total anxiety-positive scans across train/val/test). Preliminary informal inspection of high-activating spatial regions in anxiety-positive cases suggested potential involvement of prefrontal cortex, limbic structures (amygdala, hippocampus), and default-mode network regions, consistent with prior adolescent anxiety neuroimaging literature showing altered structure and function in emotion regulation and self-referential processing networks. However, rigorous statistical validation of regional contributions, ideally through integrated-gradients or attention-based interpretability methods, is deferred to future work with larger sample sizes and architectures explicitly designed for interpretability (e.g., attention-gated 3D CNNs or Vision Transformers with spatial attention weights).
+
+                                                                                                                          \textbf{Modality-Level Fusion Weights:} The optimized fusion weights (Section 5.3, Table 3) provide modality-level interpretability: behavioral questionnaires contribute 63\% of the fusion weight, MRI contributes 23\%, and phenotypic features contribute 14\%. This pattern indicates that self- and parent-reported behavioral symptoms provide the strongest concurrent predictive signal for near-term (2-year) anxiety outcomes, while neuroimaging and demographic/environmental factors provide complementary but lower-magnitude information. This weighting aligns with clinical expectations that behavioral manifestations of anxiety (worry, avoidance, somatic complaints) are more proximal to diagnostic outcomes than biological or demographic markers at this developmental stage. The substantial but non-dominant weight assigned to MRI (23\%) suggests that structural neuroimaging captures incremental predictive value beyond behavioral measures alone, potentially reflecting early neurobiological vulnerability markers (e.g., prefrontal-limbic structural connectivity, emotion regulation circuit maturation) that have not yet fully manifested in overt behavioral symptoms. The relatively modest weight assigned to static phenotypic features (14\%) is consistent with findings from prior psychiatric prediction studies showing that demographic and environmental risk factors provide broad context but are less predictive than proximal symptom measures when both are available.
+
+                                                                                                                          \section*{Discussion}
+                                                                                                                          The proposed framework integrates behavioral questionnaires, structural MRI, and demographic/phenotypic data through a twin-aware multimodal approach that prevents information leakage while maintaining strong predictive performance and clinical interpretability. The multimodal fusion model substantially outperformed all unimodal baselines, achieving a \hl{14.8~pp (absolute) improvement in ROC-AUC over MRI alone}, a \hl{11.7~pp (absolute) improvement over questionnaires alone}, and a \hl{19.7~pp (absolute) improvement over demographic features alone}. Optimized late fusion demonstrates clinically meaningful improvements over
+                                                                                                                          unimodal approaches in this small, genetically informed dataset. Although
+                                                                                                                          DeLong's test did not show statistically significant AUC differences at the
+                                                                                                                          current test set size, the fusion model produced significantly different
+                                                                                                                          classification patterns compared to the questionnaire-only baseline
+                                                                                                                          (McNemar $p = 0.0008$), suggesting that MRI and demographic information
+                                                                                                                          provide complementary predictive value beyond behavioral questionnaires.
+                                                                                                                          Twin-aware data splitting further promotes realistic generalization by
+                                                                                                                          preventing performance inflation caused by shared genetics among co-twins.
+
+                                                                                                                          \subsection*{Contributions to the Field}
+
+                                                                                                                          This research contributes to the prediction of anxiety risk in early
+                                                                                                                          adolescents and the development of multimodal psychiatric models.
+
+                                                                                                                          \begin{itemize}
+                                                                                                                              \item We introduce a twin-aware biopsychosocial framework that integrates
+                                                                                                                                  MRI, behavioral questionnaires, and phenotypic information for early
+                                                                                                                                      anxiety risk prediction in adolescents.
+                                                                                                                                          \item A family-level data splitting strategy prevents co-twin leakage,
+                                                                                                                                              ensuring unbiased generalization in genetically related cohorts.
+                                                                                                                                                  \item Compact, modality specific representations are learned to address
+                                                                                                                                                      small sample and class imbalanced settings.
+                                                                                                                                                          \item Decision level late fusion of calibrated probabilities provides
+                                                                                                                                                              stable and interpretable multimodal integration.
+                                                                                                                                                                  \item The modular architecture enables flexible integration of multiple
+                                                                                                                                                                      data modalities and could be extended to support missing modality
+                                                                                                                                                                          scenarios in future work.
+                                                                                                                                                                          \end{itemize}
+
+                                                                                                                                                                          This framework improves the profession by offering a dual-focused, multimodal, and clinically pertinent approach to anticipate adolescent mental health issues prior to the manifestation of symptoms. It is more accurate, easier to grasp, and can be used on a larger scale than current models.
+\subsection*{\hl{Construct Overlap and Label Validity}}
+
+\hl{The strong predictive performance of the behavioral questionnaire module should be interpreted in the context of construct overlap between baseline and follow-up anxiety assessments. Because both the input features and the outcome are derived from the Spence Children's Anxiety Scale (SCAS), part of the observed performance likely reflects the expected longitudinal continuity of anxiety symptoms, where elevated baseline subclinical anxiety predicts later clinically significant anxiety, rather than the discovery of a novel early biomarker. Consequently, the questionnaire module should be viewed as capturing established behavioral risk signals that are complemented by neuroimaging and phenotypic information within the multimodal framework.}
+
+\hl{The binary outcome was defined using an SCAS cutoff score of $\geq$30 at follow-up. We selected this threshold to identify clinically meaningful anxiety while maintaining a sufficient number of positive cases for model development. Lowering the threshold (e.g., $\geq$28) would increase the number of positive cases but include milder symptom presentations, whereas raising the threshold (e.g., $\geq$32) would further reduce the already limited positive class. A formal sensitivity analysis across multiple thresholds would require reprocessing all three modality pipelines from the raw QTAB data and was beyond the scope of this study.}
+
+\hl{Finally, participants with follow-up SCAS scores close to the decision threshold (approximately 28--32) may be susceptible to measurement variability and regression-to-the-mean effects. Consequently, some apparent transitions between the negative and positive classes may reflect uncertainty around the cutoff rather than genuine clinical change. The reported results should therefore be interpreted as exploratory and warrant validation using larger independent cohorts and alternative outcome definitions.}
+
+                                                                                                                                                                          \subsection*{Fusion Strategy and Comparison to Learned Fusion}
+
+                                                                                                                                                                          The optimized late fusion strategy was selected for its interpretability, stability under limited samples, and computational efficiency compared to learned cross-modal fusion approaches. While recent work has demonstrated benefits of learned fusion using attention mechanisms, hierarchical gating, or adaptive weighting, these approaches typically require substantially larger sample sizes (often $n > 1000$) to avoid overfitting complex inter-modal interaction parameters. In severely class-imbalanced settings such as the QTAB cohort (n = 180 training samples with only 24 positive cases), learned fusion architectures introduce many additional parameters that must be estimated from limited positive-class examples, substantially increasing overfitting risk.
+
+                                                                                                                                                                          In our experiments, a cross-modal attention baseline (Section 5.3, Table 3) that attempted to learn attention weights over modality representations achieved AUC = 0.7195, substantially underperforming relative to optimized late fusion (AUC = 0.8943). We hypothesize this performance gap reflects insufficient training data for learning reliable cross-modal attention parameters. Our finding is consistent with prior observations in medical AI that learned fusion mechanisms overfit under extreme class imbalance unless heavily regularized, pretrained on larger auxiliary datasets, or supported by extensive data augmentation. The late fusion approach, by contrast, reduces the parameter space to only three fusion weights (optimized via validation-set grid search), making it substantially more robust to small-sample overfitting.
+
+                                                                                                                                                                          Among decision-level fusion rules, the product-of-experts operator (Table 3) achieved high recall (1.000, detecting all test positives) but lower F1-score (0.4516) due to reduced precision, suggesting that while the modality-independence assumptions underlying product fusion partially hold, either calibration quality or mild correlation among modality outputs limits product-rule effectiveness in this setting. Alternative fusion operators such as maximum-pooling, logit-space averaging, or temperature-scaled product rules were not systematically evaluated and represent valuable directions for future comparison. Nonetheless, the substantially higher F1-score of weighted averaging (0.600) compared to product fusion (0.452) and simple averaging (0.554) demonstrates the value of data-driven weight optimization even within the late-fusion framework.
+
+                                                                                                                                                                          The high weight assigned to behavioral questionnaires (63\%) relative to MRI (23\%) and phenotypic features (14\%) is consistent with clinical expectations and prior psychiatric prediction literature. Self- and parent-reported symptoms provide strong concurrent predictive signals for near-term (2-year horizon) anxiety outcomes, as these measures directly capture behavioral manifestations of anxiety vulnerability. In contrast, structural neuroimaging features have shown more modest univariate predictive performance in adolescent samples unless combined with behavioral context. The complementary but lower weight assigned to MRI suggests that neuroimaging provides incremental predictive value beyond behavioral measures alone, potentially capturing early neurobiological vulnerability markers (prefrontal-limbic structural alterations, emotion regulation circuit immaturity) not yet fully manifest in overt behavioral symptoms. This aligns with neurodevelopmental models of adolescent anxiety proposing that structural brain differences precede symptom onset and may represent latent vulnerability factors.
+
+                                                                                                                                                                          \subsection*{Study Limitations}
+
+\hl{This study is subject to several important limitations that readers should consider when interpreting the reported findings.}
+
+\hl{\textbf{1. Small positive test count and statistical power.} The held-out test set contains only 7 anxiety-positive cases out of 62 total (11.3\%). This severely limits statistical power: no pairwise AUC comparison reached significance under DeLong's test (all $p > 0.05$), and confidence intervals are wide (AUC 95\% CI: 0.792--0.969; F1-score 95\% CI: 0.417--0.824). All reported performance metrics should be treated as preliminary and exploratory estimates.}
+
+\hl{\textbf{2. Single data partition.} The framework was evaluated on a single family-stratified split. Repeated family-stratified cross-validation across multiple seeds would provide more reliable estimates of generalization performance and should be conducted in future studies with larger QTAB-equivalent cohorts.}
+
+\hl{\textbf{3. Validation-set reuse and instability.} As detailed in the Validation Set Usage Transparency subsection, the validation set was used for six distinct model selection and calibration decisions. With only 7 validation positives, all of these decisions carry high variance. In particular, the reported fusion weights ($w_{\text{MRI}} = 0.23$, $w_{\text{questionnaire}} = 0.63$, $w_{\text{phenotypic}} = 0.14$) are optimized on a single 7-positive partition and should not be treated as stable estimates of true modality importance without repeated cross-validation.}
+
+\hl{\textbf{4. Questionnaire feature selection leakage.} Pearson correlations used for questionnaire feature selection were computed on the combined training and validation partitions ($n = 242$, 31 positives) rather than the training partition alone. While this reduces estimation variance under extreme class imbalance, it introduces a minor information leak from validation labels into the feature selection step. The magnitude of this leakage is likely small, but the direction of its effect (upward bias on questionnaire module performance) cannot be formally quantified without re-running the full pipeline with strictly training-only feature selection.}
+
+\hl{\textbf{5. Absence of external validation.} All results are derived from a single dataset (QTAB). The framework has not been evaluated on independent adolescent anxiety cohorts. External validation on datasets such as the Adolescent Brain Cognitive Development (ABCD) Study or the Healthy Brain Network (HBN) is essential to establish generalizability and is a high-priority direction for future work.}
+
+\hl{\textbf{6. SCAS cutoff and label validity.} The incident anxiety label is defined by a single threshold (SCAS $\geq$ 30) applied uniformly across ages 9--18 and both sexes. Cases near the boundary (SCAS 28--32) may represent measurement noise rather than genuine clinical transition. Sensitivity analyses varying the cutoff and stratifying by age and sex subgroups are recommended.}
+
+\hl{\textbf{7. Bootstrap confidence interval width.} The 2{,}000-round stratified percentile bootstrap does not preserve family structure (twin pairs may be split across bootstrap samples). A cluster-level (family) bootstrap would yield wider, more conservative confidence intervals and is recommended for future implementations.}
+
+\hl{\textbf{8. Class imbalance.} The 1:7 positive-to-negative ratio in the training partition required oversampling (SMOTE) and class weighting. Although these techniques partially mitigate the imbalance, the learned decision boundaries may not generalize to populations with different anxiety prevalence rates.}
+
+\subsection*{Recommendations for Future Research}
+                                                                                                                                                                          The suggested multimodal framework demonstrates considerable therapeutic potential; nonetheless, numerous opportunities for future study remain to be investigated. Extending the research to larger, multi-site cohorts would augment statistical power and external validity, facilitating the implementation of more advanced fusion methodologies such as attention-based or hierarchical integration. Incorporating methodologies such as functional MRI, speech and language metrics, real-time evaluations, and wearable sensor data may enhance the comprehension of long-term dangers and individual variances. Future study should concentrate on inference in contexts with absent modalities and evaluate generalizability across varied, independent groups beyond twins. Twin-based analyses can be expanded from familial classifications to within-pair investigations, facilitating a more distinct differentiation of disorder-related signals from common familial impacts. In conclusion, it is essential to integrate temporal and trajectory-aware modeling while also considering deployment, ethical implications, and clinical integration to develop effective and responsible early mental health screening tools for adolescents.
+
+                                                                                                                                                                          \section*{Conclusion}
+                                                                                                                                                                          This study introduces a multimodal deep learning framework that handles twins to predict adolescent anxiety disorders early, utilizing longitudinal data from the QTAB cohort. The proposed method combines behavioral questionnaires, structural MRI, and phenotypic data to reduce biases from single modalities, prevent genetic leakage, and address limitations of cross-sectional studies. Experimental findings indicate that behavioral measures offer the most robust predictive signal, whereas neuroimaging and phenotypic features provide additional complementary insights. Optimized decision-level late fusion achieved an AUC-ROC of 0.894 (95\% CI: 0.792-0.969), with a sensitivity of 85.7\% and a specificity of 87.3\% on the held-out test set. \hl{The findings demonstrate that, in small and imbalanced adolescent cohorts, careful methodology and twin-aware evaluation allow for promising early identification of anxiety risk up to two years prior to clinical onset. All reported results should be interpreted as preliminary and exploratory; AUC differences from unimodal baselines did not reach statistical significance under DeLong's test ($p > 0.05$) due to the limited test set size, and external validation on independent cohorts is required before clinical deployment.}
+\section*{Ethical Statement and Code Sharing}
+
+This study constitutes a secondary analysis of the publicly available Queensland Twin Adolescent Brain (QTAB) dataset. The original QTAB data collection received ethics approval from the Children's Health Queensland Human Research Ethics Committee (HREC; reference HREC/16/QRCH/270) and the University of Queensland Human Research Ethics Committee (UQ HREC; reference 2016001784). Written informed consent, including permission for data sharing, was obtained from all adolescent participants and their parent or legal guardian prior to participation in the original study.
+
+As the present study involved only secondary analysis of fully de-identified, publicly accessible data and did not involve any direct contact with human participants, no additional institutional review board or ethics approval was required. Data were accessed in accordance with the QTAB data-sharing policies through the University of Queensland eSpace institutional repository (\url{https://doi.org/10.48610/e891597}) and the OpenNeuro platform (\url{https://openneuro.org/datasets/ds004146}).
+
+In accordance with the PLOS ONE Data Availability and Code Sharing Policy, all analysis code developed for this study has been made publicly available without restriction. The complete codebase, including four Jupyter notebooks covering (i) MRI preprocessing and 3D-CNN training (Module 1), (ii) questionnaire-based prototypical network training (Module 2), (iii) phenotypic encoder training (Module 3), and (iv) multimodal fusion with statistical evaluation, is available at:
+
+\begin{center}
+\url{https://github.com/USERNAME/REPOSITORY}
+\end{center}
+
+The repository includes documentation, software dependencies, version information, and step-by-step instructions required to reproduce all reported analyses. Random seeds were fixed at 42 across all modules to facilitate reproducibility.
+
+\section*{Data Availability Statement}
+
+The data analyzed in this study are derived entirely from the publicly available Queensland Twin Adolescent Brain (QTAB) dataset and were not generated by the authors. No new data were collected, and no participant-level data are held privately by the authors.
+
+Demographic and phenotypic information is available through the \texttt{participants.tsv} file distributed with the QTAB dataset. Structural MRI data are publicly available from OpenNeuro:
+
+\begin{center}
+\url{https://openneuro.org/datasets/ds004146}
+\end{center}
+
+Additional restricted phenotypic variables are available upon request through the University of Queensland eSpace repository:
+
+\begin{center}
+\url{https://doi.org/10.48610/e891597}
+\end{center}
+
+via the ``Request access to the dataset'' link. Access is governed by the QTAB data custodians in accordance with the dataset's data-sharing agreement. All shared data are fully de-identified.
+
+The source code used to generate all results reported in this manuscript is publicly available at:
+
+\begin{center}
+\url{https://github.com/USERNAME/REPOSITORY}
+\end{center}
+
+This study received no external funding. The authors declare that they have no competing interests.
+                                                                                                                                                                          \section*{Supporting information}
+
+                                                                                                                                                                          \paragraph*{S1 Fig.}
+                                                                                                                                                                            \label{S1_Fig}
+
+
+                                                                                                                                                                          \textbf{Workflow of the twin-aware multimodal model.} This figure illustrates the complete pipeline, including preprocessing of MRI, questionnaire, and phenotypic data, feature extraction, prototypical network embeddings, and optimized late fusion.
+
+                                                                                                                                                                          \paragraph*{S2 Fig.}
+                                                                                                                                                                          \label{S2_Fig}
+                                                                                                                                                                          \textbf{Confusion matrices for single modalities.} Displays classification performance for Module 1 (MRI), Module 2 (Questionnaire), and Module 3 (Phenotypic data) separately, showing true positives, false positives, false negatives, and true negatives.
+
+
+
+                                                                                                                                                                          % Please compile your BiBTeX database using the "plos2025.bst" BibTeX style.
+                                                                                                                                                                          % This file is part of the current package.
+                                                                                                                                                                          % A sample BibTeX file is also included as "plos_bibtex_sample.bib".
+                                                                                                                                                                          %
+                                                                                                                                                                          % or
+                                                                                                                                                                          %
+                                                                                                                                                                          % Type in your references following Vancouver style and reference formatting instructions
+                                                                                                                                                                          % available at https://journals.plos.org/plosone/s/submission-guidelines#loc-references
+                                                                                                                                                                          % \begin{thebibliography}{}
+                                                                                                                                                                          % \bibitem{}
+                                                                                                                                                                          % Text
+                                                                                                                                                                          % \end{thebibliography}
+
+                                                                                                                                                                          \bibliography{plos_bibtex_sample}
+
+                                                                                                                                                                          \end{document}
+
+                                                                                                                                                                                                                     
+
+                                                                                                                                                                          
